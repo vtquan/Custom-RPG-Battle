@@ -101,7 +101,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Common\RPG\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +112,12 @@
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\RPG\Attack.cs" />
+    <Compile Include="Common\RPG\Character.cs" />
+    <Compile Include="Common\RPG\Item.cs" />
+    <Compile Include="Common\RPG\Monster.cs" />
+    <Compile Include="Common\RPG\Player.cs" />
+    <Compile Include="Common\RPG\Spell.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
