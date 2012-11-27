@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Custom_RPG_Battle.Common.RPG
 {
-    public class Spell : Attack
+    public class Spell : Item
     {
         private int mpCost; //how much mp to use spell
-        private int hpCost;
+        private int hpCost; //how much hp to use spell
 
         //Constructors
         public Spell()
@@ -41,6 +41,13 @@ namespace Custom_RPG_Battle.Common.RPG
 
         public Spell(string Name, int CritPercent, double MinDamage, double MaxDamage, int MPCost, int HPCost)
             : base(Name, CritPercent, MinDamage, MaxDamage)
+        {
+            mpCost = MPCost;
+            hpCost = HPCost;
+        }
+
+        public Spell(string Name, int CritPercent, double MinDamage, double MaxDamage, int MPCost, int HPCost, int MinHeal, int MaxHeal, int HealCritPercent)
+            : base(Name, CritPercent, MinDamage, MaxDamage, MinHeal, MaxHeal, HealCritPercent)
         {
             mpCost = MPCost;
             hpCost = HPCost;

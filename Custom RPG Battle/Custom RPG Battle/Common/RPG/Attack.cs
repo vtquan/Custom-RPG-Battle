@@ -149,5 +149,7 @@ namespace Custom_RPG_Battle.Common.RPG
         {
             warningMessage = WarningMessage;
         }
+
+        //Action Methods
     }
 }
