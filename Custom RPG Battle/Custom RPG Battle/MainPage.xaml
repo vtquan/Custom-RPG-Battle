@@ -33,6 +33,9 @@
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
+        <Grid Grid.Row="1">
+        	<Button x:Name="AxalfB" Content="Axalf" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AxalfB_Click"/>
+        </Grid>
 
         <VisualStateManager.VisualStateGroups>
 

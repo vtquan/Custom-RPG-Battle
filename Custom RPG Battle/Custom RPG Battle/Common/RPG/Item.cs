@@ -10,13 +10,21 @@ namespace Custom_RPG_Battle.Common.RPG
     {
         private int minHeal;   
         private int maxHeal;
-        private int healCritPercent = 0;
+        private int healCritPercent = 0; //value between 0 to 10
 
         //Constructors
         public Item()   
             : base("Item")      //default name is Item instead of Attack
         {
             minHeal = 0;
+        }
+
+        public Item(string Name, int Heal) //for basic healing item
+            : base(Name)
+        {
+            minHeal = Heal;
+            maxHeal = Heal;
+            healCritPercent = 0;
         }
 
         public Item(string Name, int MinHeal, int MaxHeal, int HealCritPercent) //for pure healing item

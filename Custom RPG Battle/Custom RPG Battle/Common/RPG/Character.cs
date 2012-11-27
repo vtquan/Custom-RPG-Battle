@@ -354,6 +354,8 @@ namespace Custom_RPG_Battle.Common.RPG
             numItemList = NumItemList;
         }
 
+        //Attack Methods
+        
         //Spell Methods
         public void addSpell(Spell spell)
         {

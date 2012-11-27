@@ -48,5 +48,10 @@ namespace Custom_RPG_Battle
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
         }
+
+        private void AxalfB_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Pages.Fights.AxalfFightPage));
+        }
     }
 }
