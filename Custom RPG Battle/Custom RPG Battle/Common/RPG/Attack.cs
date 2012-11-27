@@ -104,6 +104,11 @@ namespace Custom_RPG_Battle.Common.RPG
             return warning;
         }
 
+        public int getNumDelay()
+        {
+            return numDelay;
+        }
+
         public string getWarningMessage()
         {
             return warningMessage;
@@ -133,6 +138,11 @@ namespace Custom_RPG_Battle.Common.RPG
         public void setWarning(bool Warning)
         {
             warning = Warning;
+        }
+
+        public void setNumDelay(int NumDelay)
+        {
+            numDelay = NumDelay;
         }
 
         public void setWarningMessage(string WarningMessage)
