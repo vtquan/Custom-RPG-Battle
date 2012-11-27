@@ -293,6 +293,8 @@ namespace Custom_RPG_Battle.Common.RPG
         public void setSpellList(Spell[] SpellList)
         {
             int numSpellsFound = 0;  //store how many spells was found in SpellList
+            spellList = new Spell[SpellList.Length];    
+
             for (int i = 0; SpellList[i] != null; i++)    //find how many spells are in the new spellList
             {
                 if (SpellList[i] != null)
@@ -310,19 +312,46 @@ namespace Custom_RPG_Battle.Common.RPG
             numItems = NumItems;
         }
 
-        public void setItemList(Item[] ItemList)
+        public void setItemList(Item[] ItemList)    //Set itemList to those given and numItemList is cleared to zero values
         {
             int numItemsFound = 0;  //store how many spells was found in SpellList
+            itemList = new Item[ItemList.Length];
             for (int i = 0; ItemList[i] != null; i++)    //find how many spells are in the new spellList
             {
                 if (ItemList[i] != null)
                 {
-                    ItemList[numItemsFound] = ItemList[i];
+                    itemList[numItemsFound] = ItemList[i];
                 }
                 numItemsFound++;
             }
 
             this.setNumSpells(numItemsFound);   //change numSpells to match the new spellList
+
+            //Reset numItemList to match the size of itemList and all values to zero
+            int[] NumItemList = new int[ItemList.Length];
+            setNumItemList(NumItemList);
+        }
+
+        public void setItemList(Item[] ItemList, int[] NumItemList)    //Set both itemList and numItemList to those given
+        {
+            int numItemsFound = 0;  //store how many spells was found in SpellList
+            itemList = new Item[ItemList.Length];
+            for (int i = 0; ItemList[i] != null; i++)    //find how many spells are in the new spellList
+            {
+                if (ItemList[i] != null)
+                {
+                    itemList[numItemsFound] = ItemList[i];
+                    numItemList[numItemsFound] = NumItemList[i];
+                }
+                numItemsFound++;
+            }
+
+            this.setNumSpells(numItemsFound);   //change numSpells to match the new spellList
+        }
+
+        private void setNumItemList(int[] NumItemList)  //Can only be changed along with the itemList
+        {
+            numItemList = NumItemList;
         }
 
         //Spell Methods
@@ -343,7 +372,7 @@ namespace Custom_RPG_Battle.Common.RPG
             }
         }
 
-        public KeyValuePair<bool, int[]> useSpell(string spellName, ref Monster Target)  //return whether item was used successfully; int[0] = damage, int[1] = spellIndex; int[i] = -1 if !used
+        public KeyValuePair<bool, int[]> useSpell(string spellName, ref Monster Target)  ///Key: whether item was used successfully; Value: int[0] = damage, int[1] = spellIndex; int[i] = -1 if !used
         {
             bool used = false;  //whether item was used
             int[] spellResult = new int[2];

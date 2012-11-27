@@ -13,13 +13,24 @@ namespace Custom_RPG_Battle.Common.RPG
         private double minDamage;
         private double maxDamage;
         private int accuracy;   //value between 0-10
-        private bool warning;
+        private bool warning;   //if the attack is delayed
+        private int numDelay;   //number of turns until attack is done if warning is true
         private string warningMessage;  //message to print if warning is true
 
         //Constructors
         public Attack()
         {
             name = "Attack";
+            critPercent = 0;
+            minDamage = 0;
+            maxDamage = 0;
+            warning = false;
+            warningMessage = "";
+        }
+
+        public Attack(string Name)
+        {
+            name = Name;
             critPercent = 0;
             minDamage = 0;
             maxDamage = 0;
