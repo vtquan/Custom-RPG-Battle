@@ -38,7 +38,7 @@ namespace Custom_RPG_Battle.Common.RPG
         }
 
         //Action Methods
-        public double attack(ref Monster Target)
+        public double attackObject(ref Monster Target)
         {
             Random random = new Random();
 
@@ -54,6 +54,9 @@ namespace Custom_RPG_Battle.Common.RPG
             {
                 damage = damage * 1.5;
             }
+
+            Target.testParalyzed();
+            Target.testPoisoned();
 
             Target.setHP(Target.getHP() - (int)damage);
 

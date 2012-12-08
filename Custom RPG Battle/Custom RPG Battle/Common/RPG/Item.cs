@@ -12,6 +12,9 @@ namespace Custom_RPG_Battle.Common.RPG
         private int maxHeal;
         private int healCritPercent = 0; //value between 0 to 10
 
+        private int poisonStrength = 0;
+        private int paralyzeStrength = 0;
+
         //Constructors
         public Item()   
             : base("Item")      //default name is Item instead of Attack
@@ -65,6 +68,29 @@ namespace Custom_RPG_Battle.Common.RPG
             minHeal = MinHeal;
             maxHeal = MaxHeal;
             healCritPercent = HealCritPercent;
+        }
+
+        public Item(string Name, int CritPercent, double MinDamage, double MaxDamage, int MinHeal, int MaxHeal, int HealCritPercent, int PoisonStrength, int ParalyzeStrength)
+            : base(Name, CritPercent, MinDamage, MaxDamage)
+        {
+            minHeal = MinHeal;
+            maxHeal = MaxHeal;
+            healCritPercent = HealCritPercent;
+
+            poisonStrength = PoisonStrength;
+            paralyzeStrength = ParalyzeStrength;
+
+        }
+
+        public Item(string Name, int CritPercent, double MinDamage, double MaxDamage, bool Warning, string WarningMessage, int MinHeal, int MaxHeal, int HealCritPercent, int PoisonStrength, int ParalyzeStrength)
+            : base(Name, CritPercent, MinDamage, MaxDamage, Warning, WarningMessage)
+        {
+            minHeal = MinHeal;
+            maxHeal = MaxHeal;
+            healCritPercent = HealCritPercent;
+
+            poisonStrength = PoisonStrength;
+            paralyzeStrength = ParalyzeStrength;
         }
 
         //Get Methods

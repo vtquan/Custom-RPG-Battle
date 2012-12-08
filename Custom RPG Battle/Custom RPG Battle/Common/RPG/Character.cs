@@ -354,8 +354,31 @@ namespace Custom_RPG_Battle.Common.RPG
             numItemList = NumItemList;
         }
 
-        //Attack Methods
-        
+        //Action Methods
+        public void testPoisoned()
+        {
+            Random random = new Random();
+
+            //Calculate Initial Damage
+            int poisonResult = random.Next(0, 11);
+            if(poisonResult > poisonResist)
+            {
+                isPoisoned = true;
+            }
+        }
+
+        public void testParalyzed()
+        {
+            Random random = new Random();
+
+            //Calculate Initial Damage
+            int paralyzeResult = random.Next(0, 11);
+            if (paralyzeResult > paralyzeResist)
+            {
+                isParalyzed = true;
+            }
+        }
+
         //Spell Methods
         public void addSpell(Spell spell)
         {
@@ -374,7 +397,7 @@ namespace Custom_RPG_Battle.Common.RPG
             }
         }
 
-        public KeyValuePair<bool, int[]> useSpell(string spellName, ref Monster Target)  ///Key: whether item was used successfully; Value: int[0] = damage, int[1] = spellIndex; int[i] = -1 if !used
+        public KeyValuePair<bool[], int[]> useSpell(string spellName, ref Monster Target)  ///Key: bool[0] = item was used, bool[1] = ; Value: int[0] = damage, int[1] = spellIndex;
         {
             bool used = false;  //whether item was used
             int[] spellResult = new int[2];

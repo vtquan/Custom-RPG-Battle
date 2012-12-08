@@ -53,6 +53,13 @@ namespace Custom_RPG_Battle.Common.RPG
             hpCost = HPCost;
         }
 
+        public Spell(string Name, int CritPercent, double MinDamage, double MaxDamage, int MPCost, int HPCost, int MinHeal, int MaxHeal, int HealCritPercent, int PoisonStrength, int ParalyzeStrength)
+            : base(Name, CritPercent, MinDamage, MaxDamage, MinHeal, MaxHeal, HealCritPercent, PoisonStrength, ParalyzeStrength)
+        {
+            mpCost = MPCost;
+            hpCost = HPCost;
+        }
+
         //Get Methods
 
         public int getMPCost()
