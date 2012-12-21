@@ -28,6 +28,7 @@ namespace Custom_RPG_Battle.Common.RPG
         private Item[] itemList = new Item[10];    //store item 
         private int[] numItemList = new int[10];    //store quantity of item in itemList[i] in numItemList[i]
 
+        //Constructors
         public Character()
         {
             name = "Character";
@@ -377,6 +378,27 @@ namespace Custom_RPG_Battle.Common.RPG
             {
                 isParalyzed = true;
             }
+            else
+            {
+                isParalyzed = false;
+            }
+        }
+
+        public void inflictPoison()
+        {
+            if (isPoisoned)
+            {
+                this.setHP(this.getHP() - (int)(this.getHPStart() * .10));
+            }
+        }
+
+        public bool inflictParalyze()   //return whether the character can attacks
+        {
+            if (isParalyzed)
+            {
+                this.testParalyzed();
+            }
+            return isParalyzed;
         }
 
         //Spell Methods

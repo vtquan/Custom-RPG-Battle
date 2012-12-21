@@ -29,6 +29,12 @@ namespace Custom_RPG_Battle.Common.RPG
             defaultAttack = new Attack(1, 1, 15);
         }
 
+        public Player(string Name, int HP, int MP, int PoisonResist, int ParalyzeResist, Attack DefaultAttack)
+            : base(Name, HP, MP, PoisonResist, ParalyzeResist)
+        {
+            defaultAttack = DefaultAttack;
+        }
+
         //Get Methods
 
         //Set Methods

@@ -94,6 +94,7 @@ namespace Custom_RPG_Battle.Common.RPG
                 }
             }
         }
+
         public KeyValuePair<double, int> attack(ref Player Target)
         {
             Random random = new Random();
