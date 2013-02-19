@@ -419,7 +419,7 @@ namespace Custom_RPG_Battle.Common.RPG
             }
         }
 
-        public KeyValuePair<bool[], int[]> useSpell(string spellName, ref Monster Target)  ///Key: bool[0] = item was used, bool[1] = ; Value: int[0] = damage, int[1] = spellIndex;
+        public KeyValuePair<bool, int[]> useSpell(string spellName, ref Monster Target)  ///Key: bool[0] = item was used; Value: int[0] = damage, int[1] = spellIndex;
         {
             bool used = false;  //whether item was used
             int[] spellResult = new int[2];

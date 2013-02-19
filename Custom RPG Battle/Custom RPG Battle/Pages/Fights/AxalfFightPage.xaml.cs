@@ -216,7 +216,7 @@ namespace Custom_RPG_Battle.Pages.Fights
                 battleEndMessage();  //bring up notification if you win, lose, or fled
                 return;
             }
-            double damage = You.attack(ref Enemy);
+            double damage = You.attackObject(ref Enemy);
             ActionLogList.Children.Add(new TextBlock() { Text = "You did " + (int)damage + " damage to " + Enemy.getName() });
 
             //Flinch Animation for Monster 
