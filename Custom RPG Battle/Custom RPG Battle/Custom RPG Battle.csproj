@@ -118,6 +118,9 @@
     <Compile Include="Common\RPG\Player.cs" />
     <Compile Include="Common\RPG\Spell.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="CustomMonsterAttackPage.xaml.cs">
+      <DependentUpon>CustomMonsterAttackPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
     <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomMonsterAttackPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
