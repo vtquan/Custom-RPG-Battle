@@ -53,5 +53,10 @@ namespace Custom_RPG_Battle
         {
             Frame.Navigate(typeof(Pages.Fights.AxalfFightPage));
         }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
