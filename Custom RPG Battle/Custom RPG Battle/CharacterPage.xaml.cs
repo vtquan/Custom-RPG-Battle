@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace Custom_RPG_Battle
@@ -20,27 +21,28 @@ namespace Custom_RPG_Battle
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class MainPage : Custom_RPG_Battle.Common.LayoutAwarePage
+    public sealed partial class CharacterPage : Custom_RPG_Battle.Common.LayoutAwarePage
     {
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
-        Object MonNm;
-        Object MonSub;
-        Object MonHP;
-        Object MonMP;
+        Object CharNm;
+        Object CharHP;
+        Object CharMP;
+        Object CharMinDmg;
+        Object CharMaxDmg;
 
-
-        public MainPage()
+        public CharacterPage()
         {
-            MonNm = localSettings.Values["MonNm"];
-            MonSub = localSettings.Values["MonSub"];
-            MonHP = localSettings.Values["MonHP"];
-            MonMP = localSettings.Values["MonMP"];
+            CharNm = localSettings.Values["CharNm"];
+            CharHP = localSettings.Values["CharHP"];
+            CharMP = localSettings.Values["CharMP"];
+            CharMinDmg = localSettings.Values["CharMinDmg"];
+            CharMaxDmg = localSettings.Values["CharMaxDmg"];
 
             this.InitializeComponent();
         }
 
-        /// <summary>
+       /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
         /// provided when recreating a page from a prior session.
         /// </summary>
@@ -51,21 +53,25 @@ namespace Custom_RPG_Battle
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
-            if (MonNm != null)
+            if (CharNm != null)
             {
-                MonsterName.Text = MonNm.ToString();
+                MonsterName.Text = CharNm.ToString();
             }
-            if (MonSub != null)
+            if (CharHP != null)
             {
-                MonsterSub.Text = MonSub.ToString();
+                MonsterHP.Text = CharHP.ToString();
             }
-            if (MonHP != null)
+            if (CharMP != null)
             {
-                MonsterHP.Text = MonHP.ToString();
+                MonsterMP.Text = CharMP.ToString();
             }
-            if (MonMP != null)
+            if (CharMinDmg != null)
             {
-                MonsterMP.Text = MonMP.ToString();
+                Attack2MinDmg.Text = CharMinDmg.ToString();
+            }
+            if (CharMaxDmg != null)
+            {
+                Attack2MaxDmg.Text = CharMaxDmg.ToString();
             }
         }
 
@@ -77,29 +83,26 @@ namespace Custom_RPG_Battle
         /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
-            localSettings.Values["MonNm"] = MonsterName.Text;
-            localSettings.Values["MonSub"] = MonsterSub.Text;
-            localSettings.Values["MonHP"] = MonsterHP.Text;
-            localSettings.Values["MonMP"] = MonsterMP.Text;
-        }
-
-        private void AxalfB_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Pages.Fights.AxalfFightPage));
+            localSettings.Values["CharNm"] = MonsterName.Text;
+            localSettings.Values["CharHP"] = MonsterHP.Text;
+            localSettings.Values["CharMP"] = MonsterMP.Text;
+            localSettings.Values["CharMinDmg"] = Attack2MinDmg.Text;
+            localSettings.Values["CharMaxDmg"] = Attack2MaxDmg.Text;
         }
 
         private async void NextButton_Click(object sender, RoutedEventArgs e)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
-            localSettings.Values["MonNm"] = MonsterName.Text;
-            localSettings.Values["MonSub"] = MonsterSub.Text;
-            localSettings.Values["MonHP"] = MonsterHP.Text;
-            localSettings.Values["MonMP"] = MonsterMP.Text;
+            localSettings.Values["CharNm"] = MonsterName.Text;
+            localSettings.Values["CharHP"] = MonsterHP.Text;
+            localSettings.Values["CharMP"] = MonsterMP.Text;
+            localSettings.Values["CharMinDmg"] = Attack2MinDmg.Text;
+            localSettings.Values["CharMaxDmg"] = Attack2MaxDmg.Text;
 
             bool error = false;
             var messageDialog = new MessageDialog("");
-            string[] values = {MonsterHP.Text, MonsterMP.Text, Int32.MaxValue.ToString() };
+            string[] values = { MonsterHP.Text, MonsterMP.Text, Attack2MinDmg.Text, Attack2MaxDmg.Text, Int32.MaxValue.ToString() };
             int result;
 
             foreach (string value in values)
@@ -107,7 +110,7 @@ namespace Custom_RPG_Battle
                 try
                 {
                     result = Convert.ToInt32(value);
-                    
+
                 }
                 catch (OverflowException)
                 {
@@ -124,7 +127,7 @@ namespace Custom_RPG_Battle
             }
             if (!error)
             {
-                Frame.Navigate(typeof(CustomMonsterAttackPage));
+                Frame.Navigate(typeof(CharacterSpellPage));
             }
             else
             {

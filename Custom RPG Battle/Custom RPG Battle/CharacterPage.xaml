@@ -7,16 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
     x:Name="pageRoot"
-    x:Class="Custom_RPG_Battle.MainPage"
+    x:Class="Custom_RPG_Battle.CharacterPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
     <common:LayoutAwarePage.Resources>
 
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">Create the Enemy</x:String>
+        <x:String x:Key="AppName">Create your Character</x:String>
     </common:LayoutAwarePage.Resources>
-    
+
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
@@ -79,14 +79,16 @@
         		<ColumnDefinition/>
         	</Grid.ColumnDefinitions>
         	<TextBlock x:Name="MonsterNameLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Margin="0,40,0,0" FontSize="26.667" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
-        	<TextBlock x:Name="MonsterSubtitleLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Subtitle" VerticalAlignment="Top" Margin="0,104,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
         	<TextBox x:Name="MonsterName" TextWrapping="Wrap" VerticalAlignment="Top" Margin="260,72,260,0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterSub" TextWrapping="Wrap" VerticalAlignment="Top" Margin="160,136,160,0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBlock x:Name="MonsterHPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP" VerticalAlignment="Top" Margin="0,168,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterHP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,200,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBlock x:Name="MonsterMPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="MP" VerticalAlignment="Top" Margin="0,232,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterMP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,264,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1"/>
-            <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.ColumnSpan="4" Margin="200,0,200,100" Click="NextButton_Click" Grid.RowSpan="2"/>
+        	<TextBlock x:Name="MonsterHPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP" VerticalAlignment="Top" Margin="322,109,327,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
+        	<TextBox x:Name="MonsterHP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,146,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1"/>
+        	<TextBlock x:Name="MonsterMPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="MP" VerticalAlignment="Top" Margin="322,183,322,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
+        	<TextBox x:Name="MonsterMP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,220,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1"/>
+        	<Button x:Name="NextButton" Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.ColumnSpan="4" Margin="200,0,200,100" Grid.Row="1" Click="NextButton_Click"/>
+        	<TextBlock x:Name="Attack2DmgLabel" TextWrapping="Wrap" Text="Attack Damage" VerticalAlignment="Top" Margin="0,257,0,0" FontSize="26.667" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        	<TextBlock x:Name="to2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Margin="0,298,0,0" FontSize="26.667" Grid.RowSpan="2" Grid.ColumnSpan="4"/>
+        	<TextBox x:Name="Attack2MaxDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="0,298,260,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Grid.Column="2" Grid.RowSpan="2"/>
+        	<TextBox x:Name="Attack2MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,298,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left" Grid.Column="1" Grid.RowSpan="2"/>
 
         	<UI:AdControl 
         		Height="90" 

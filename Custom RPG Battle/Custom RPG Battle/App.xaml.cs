@@ -29,6 +29,28 @@ namespace Custom_RPG_Battle
         /// </summary>
         public App()
         {
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            Object A1MP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A1MP"];
+
+            Object A2Nm = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A2Nm"];
+            Object A2MinDmg = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A2MinDmg"];
+            Object A2MaxDmg = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A2MaxDmg"];
+            Object A2HP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A2HP"];
+            Object A2MP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A2MP"];
+
+            Object A3Nm = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A3Nm"];
+            Object A3MinDmg = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A3MinDmg"];
+            Object A3MaxDmg = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A3MaxDmg"];
+            Object A3HP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A3HP"];
+            Object A3MP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A3MP"];
+
+            Object A4Nm = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A4Nm"];
+            Object A4MinDmg = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A4MinDmg"];
+            Object A4MaxDmg = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A4MaxDmg"];
+            Object A4HP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A4HP"];
+            Object A4MP = Windows.Storage.ApplicationData.Current.LocalSettings.Values["A4MP"];
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

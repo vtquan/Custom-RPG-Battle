@@ -480,7 +480,7 @@ namespace Custom_RPG_Battle.Common.RPG
                     break;
                 }
 
-                else if (spellName == spellList[i].getName())
+                else if (spellName.Equals(spellList[i].getName()))
                 {
                     spellIndex = i;
                     break;
