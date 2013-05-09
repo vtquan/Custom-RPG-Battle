@@ -250,6 +250,13 @@ namespace Custom_RPG_Battle
         {
             disableButton();
 
+            ActionLogLabel.Visibility = Visibility.Visible;
+            ActionLogScroll.Visibility = Visibility.Visible;
+            SpellListLabel.Visibility = Visibility.Collapsed;
+            SpellListScroll.Visibility = Visibility.Collapsed;
+            ItemListLabel.Visibility = Visibility.Collapsed;
+            ItemListScroll.Visibility = Visibility.Collapsed;
+
             if (Enemy.getHP() <= 0 || You.getHP() <= 0 || fled)
             {
                 battleEndMessage();  //bring up notification if you win, lose, or fled
@@ -304,6 +311,10 @@ namespace Custom_RPG_Battle
                 spellButton[i].Click += spellClick;
                 SpellList.Children.Add(spellButton[i]);
             }
+
+            Button returnButton = new Button() { Content = "Return" };
+            returnButton.Click += returnButton_Click;
+            SpellList.Children.Add(returnButton);
 
             //Display item list
             ActionLogLabel.Visibility = Visibility.Collapsed;
@@ -379,6 +390,10 @@ namespace Custom_RPG_Battle
                 itemButton[i].Click += itemClick;
                 ItemList.Children.Add(itemButton[i]);
             }
+
+            Button returnButton = new Button() { Content = "Return" };
+            returnButton.Click += returnButton_Click;
+            SpellList.Children.Add(returnButton);
 
             //Display item list
             ActionLogLabel.Visibility = Visibility.Collapsed;
@@ -613,6 +628,16 @@ namespace Custom_RPG_Battle
                 yourMPBar.Width = playerMPBarWidth * You.getMP() / You.getMPStart();
                 yourMPText.Text = You.getMP().ToString();
             }
+        }
+
+        private void returnButton_Click(object sender, RoutedEventArgs e)
+        {
+            ActionLogLabel.Visibility = Visibility.Visible;
+            ActionLogScroll.Visibility = Visibility.Visible;
+            SpellListLabel.Visibility = Visibility.Collapsed;
+            SpellListScroll.Visibility = Visibility.Collapsed;
+            ItemListLabel.Visibility = Visibility.Collapsed;
+            ItemListScroll.Visibility = Visibility.Collapsed;
         }
     }
 }
