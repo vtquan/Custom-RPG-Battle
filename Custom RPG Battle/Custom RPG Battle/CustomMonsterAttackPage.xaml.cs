@@ -67,23 +67,23 @@ namespace Custom_RPG_Battle
         {
             if (A1Nm != null)
             {
-                Attack4Name.Text = A1Nm.ToString();
+                Attack1Name.Text = A1Nm.ToString();
             }
             if (A1MinDmg != null)
             {
-                Attack4MinDmg.Text = A1MinDmg.ToString();
+                Attack1MinDmg.Text = A1MinDmg.ToString();
             }
             if (A1MaxDmg != null)
             {
-                Attack4MaxDmg.Text = A1MaxDmg.ToString();
+                Attack1MaxDmg.Text = A1MaxDmg.ToString();
             }
             if (A1HP != null)
             {
-                Attack4HPCost.Text = A1HP.ToString();
+                Attack1HPCost.Text = A1HP.ToString();
             }
             if (A1MP != null)
             {
-                Attack4MPCost.Text = A1MP.ToString();
+                Attack1MPCost.Text = A1MP.ToString();
             }
 
             if (A2Nm != null)

@@ -28,6 +28,7 @@ namespace Custom_RPG_Battle
         Object MonSub;
         Object MonHP;
         Object MonMP;
+        Object MonPortrait;
 
 
         public MainPage()
@@ -36,6 +37,7 @@ namespace Custom_RPG_Battle
             MonSub = localSettings.Values["MonSub"];
             MonHP = localSettings.Values["MonHP"];
             MonMP = localSettings.Values["MonMP"];
+            MonPortrait = localSettings.Values["MonPortrait"];
 
             this.InitializeComponent();
         }
@@ -67,6 +69,20 @@ namespace Custom_RPG_Battle
             {
                 MonsterMP.Text = MonMP.ToString();
             }
+
+            if (MonPortrait != null)
+            {
+                if ((int)MonPortrait == 1)
+                    radio1.IsChecked = true;
+                else if ((int)MonPortrait == 2)
+                    radio2.IsChecked = true;
+                else if ((int)MonPortrait == 3)
+                    radio3.IsChecked = true;
+                else if ((int)MonPortrait == 4)
+                    radio4.IsChecked = true;
+                else
+                    radio5.IsChecked = true;
+            }
         }
 
         /// <summary>
@@ -81,6 +97,18 @@ namespace Custom_RPG_Battle
             localSettings.Values["MonSub"] = MonsterSub.Text;
             localSettings.Values["MonHP"] = MonsterHP.Text;
             localSettings.Values["MonMP"] = MonsterMP.Text;
+
+
+            if (radio1.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 1;
+            else if (radio2.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 2;
+            else if (radio3.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 3;
+            else if (radio4.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 4;
+            else
+                localSettings.Values["MonPortrait"] = 5;            
         }
 
         private void AxalfB_Click(object sender, RoutedEventArgs e)
@@ -92,15 +120,32 @@ namespace Custom_RPG_Battle
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
+            bool error = false;
+            var messageDialog = new MessageDialog("");
+            string[] values = {MonsterHP.Text, MonsterMP.Text, Int32.MaxValue.ToString() };
+            int result;
+
             localSettings.Values["MonNm"] = MonsterName.Text;
             localSettings.Values["MonSub"] = MonsterSub.Text;
             localSettings.Values["MonHP"] = MonsterHP.Text;
             localSettings.Values["MonMP"] = MonsterMP.Text;
 
-            bool error = false;
-            var messageDialog = new MessageDialog("");
-            string[] values = {MonsterHP.Text, MonsterMP.Text, Int32.MaxValue.ToString() };
-            int result;
+
+            if (radio1.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 1;
+            else if (radio2.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 2;
+            else if (radio3.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 3;
+            else if (radio4.IsChecked ?? true)
+                localSettings.Values["MonPortrait"] = 4;
+            else
+                localSettings.Values["MonPortrait"] = 5;          
+
+            //if (MonPortrait != null)
+            //{
+            //    error = true;
+            //}
 
             foreach (string value in values)
             {

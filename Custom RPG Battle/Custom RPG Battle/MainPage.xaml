@@ -68,32 +68,51 @@
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
         <Grid Grid.Row="1">
-        	<Grid.RowDefinitions>
-        		<RowDefinition/>
-        		<RowDefinition/>
-        	</Grid.RowDefinitions>
-        	<Grid.ColumnDefinitions>
-        		<ColumnDefinition/>
-        		<ColumnDefinition/>
-        		<ColumnDefinition/>
-        		<ColumnDefinition/>
-        	</Grid.ColumnDefinitions>
         	<TextBlock x:Name="MonsterNameLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Margin="0,40,0,0" FontSize="26.667" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
-        	<TextBlock x:Name="MonsterSubtitleLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Subtitle" VerticalAlignment="Top" Margin="0,104,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterName" TextWrapping="Wrap" VerticalAlignment="Top" Margin="260,72,260,0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterSub" TextWrapping="Wrap" VerticalAlignment="Top" Margin="160,136,160,0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBlock x:Name="MonsterHPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP" VerticalAlignment="Top" Margin="0,168,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterHP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,200,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBlock x:Name="MonsterMPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="MP" VerticalAlignment="Top" Margin="0,232,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1"/>
-        	<TextBox x:Name="MonsterMP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,264,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1"/>
-            <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.ColumnSpan="4" Margin="200,0,200,100" Click="NextButton_Click" Grid.RowSpan="2"/>
+        	<TextBlock x:Name="MonsterSubtitleLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Subtitle" VerticalAlignment="Top" Margin="0,104,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3"/>
+        	<TextBox x:Name="MonsterName" TextWrapping="Wrap" VerticalAlignment="Top" Margin="260,72,260,0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3" Width="160"/>
+        	<TextBox x:Name="MonsterSub" TextWrapping="Wrap" VerticalAlignment="Top" Margin="160,136,160,0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3" Width="360"/>
+        	<TextBlock x:Name="MonsterHPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP" VerticalAlignment="Top" Margin="0,168,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3"/>
+        	<TextBox x:Name="MonsterHP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,200,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3" Width="160"/>
+        	<TextBlock x:Name="MonsterMPLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="MP" VerticalAlignment="Top" Margin="0,232,0,0" FontSize="26.667" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3"/>
+        	<TextBox x:Name="MonsterMP" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,264,260,0" TextAlignment="Center" InputScope="NumberFullWidth" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="3" Width="160"/>
+            <Button x:Name="NextButton" Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.ColumnSpan="4" Margin="200,0,200,100" Click="NextButton_Click" Grid.RowSpan="3"/>
 
         	<UI:AdControl 
         		Height="90" 
         		VerticalAlignment="Bottom" 
         		Width="728" 
         		ApplicationId="0697b85e-f21a-4118-afb4-5225ee301d2c" 
-        		AdUnitId="124653" Margin="319,0" Grid.ColumnSpan="4" Grid.Row="1"/>
+        		AdUnitId="124653" Margin="319,0" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="3"/>
+        	<Grid Margin="0,301,0,143">
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition/>
+        			<ColumnDefinition/>
+        			<ColumnDefinition/>
+        			<ColumnDefinition/>
+        			<ColumnDefinition/>
+        		</Grid.ColumnDefinitions>
+        		<Viewbox Margin="50,0,50,50">
+        			<Image Height="100" Width="100" Source="Assets/Monster Pics/mon1.png"/>
+        		</Viewbox>
+        		<RadioButton x:Name="radio1" Content="Portrait 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Margin="0" IsChecked="True" GroupName="Monster Portrait"/>
+        		<Viewbox Margin="50,0,50,50" Grid.Column="1">
+        			<Image Height="100" Width="100" Source="Assets/Monster Pics/mon2.png"/>
+        		</Viewbox>
+        		<RadioButton x:Name="radio2" Content="Portrait 2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Margin="0" Grid.Column="1" GroupName="Monster Portrait"/>
+        		<Viewbox Margin="50,0,50,50" Grid.Column="2">
+        			<Image Height="100" Width="100" Source="Assets/Monster Pics/mon3.png"/>
+        		</Viewbox>
+        		<RadioButton x:Name="radio3" Content="Portrait 3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Margin="0" Grid.Column="2" GroupName="Monster Portrait"/>
+        		<Viewbox Margin="50,0,50,50" Grid.Column="3">
+        			<Image Height="100" Width="100" Source="Assets/Monster Pics/mon4.png"/>
+        		</Viewbox>
+        		<RadioButton x:Name="radio4" Content="Portrait 4" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Margin="0" Grid.Column="3" GroupName="Monster Portrait"/>
+        		<Viewbox Margin="50,0,50,50" Grid.Column="4">
+        			<Image Height="100" Width="100" Source="Assets/Monster Pics/mon5.png"/>
+        		</Viewbox>
+        		<RadioButton x:Name="radio5" Content="Portrait 5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Margin="0" Grid.Column="4" GroupName="Monster Portrait"/>
+        	</Grid>
 
         </Grid>
 
