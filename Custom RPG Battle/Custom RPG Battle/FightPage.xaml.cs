@@ -38,6 +38,9 @@ namespace Custom_RPG_Battle
         Button[] itemButton;
         Button[] spellButton;
 
+        string tempSpellName;  
+        string tempItemName;
+
         Random random = new Random();
         bool fled = false;  //check if the flee button has been pressed
 
@@ -94,10 +97,14 @@ namespace Custom_RPG_Battle
             Attack A3 = new Attack(localSettings.Values["A3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A3MaxDmg"].ToString()));
             Attack A4 = new Attack(localSettings.Values["A4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A4MaxDmg"].ToString()));
 
-            Enemy.addAttack(A1);
-            Enemy.addAttack(A2);
-            Enemy.addAttack(A3);
-            Enemy.addAttack(A4);
+            if (!A1.getName().Equals("")) 
+                Enemy.addAttack(A1);
+            if (!A2.getName().Equals("")) 
+                Enemy.addAttack(A2);
+            if (!A3.getName().Equals("")) 
+                Enemy.addAttack(A3);
+            if (!A4.getName().Equals("")) 
+                Enemy.addAttack(A4);
 
             //Creating and adding items  to player
             Item I1 = new Item(localSettings.Values["I1Nm"].ToString(), Convert.ToInt32(localSettings.Values["I1HP"].ToString()));
@@ -105,33 +112,17 @@ namespace Custom_RPG_Battle
             Item I3 = new Item(localSettings.Values["I3Nm"].ToString(), Convert.ToInt32(localSettings.Values["I3HP"].ToString()));
             Item I4 = new Item(localSettings.Values["I4Nm"].ToString(), Convert.ToInt32(localSettings.Values["I4HP"].ToString()));
 
-            int i = 0;
-            while (i < Convert.ToInt32(localSettings.Values["I1Qnt"].ToString()))
-            {
-                You.addItem(I1);
-                i++;
-            }
+            if (!I1.getName().Equals(""))
+                You.addItem(I1, Convert.ToInt32(localSettings.Values["I1Qnt"].ToString()));
 
-            i = 0;
-            while (i < Convert.ToInt32(localSettings.Values["I2Qnt"].ToString()))
-            {
-                You.addItem(I2);
-                i++;
-            }
+            if (!I2.getName().Equals(""))
+                You.addItem(I2, Convert.ToInt32(localSettings.Values["I2Qnt"].ToString()));
 
-            i = 0;
-            while (i < Convert.ToInt32(localSettings.Values["I3Qnt"].ToString()))
-            {
-                You.addItem(I3);
-                i++;
-            }
-
-            i = 0;
-            while (i < Convert.ToInt32(localSettings.Values["I4Qnt"].ToString()))
-            {
-                You.addItem(I4);
-                i++;
-            }
+            if (!I3.getName().Equals(""))
+                You.addItem(I3, Convert.ToInt32(localSettings.Values["I3Qnt"].ToString()));
+                        
+            if (!I4.getName().Equals(""))
+                You.addItem(I4, Convert.ToInt32(localSettings.Values["I4Qnt"].ToString()));
 
             //Creating and adding spells  to player
             Spell S1 = new Spell(localSettings.Values["S1Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S1MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S1MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S1MP"].ToString()));
@@ -139,10 +130,14 @@ namespace Custom_RPG_Battle
             Spell S3 = new Spell(localSettings.Values["S3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S3MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S3MP"].ToString()));
             Spell S4 = new Spell(localSettings.Values["S4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S4MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S4MP"].ToString()));
 
-            You.addSpell(S1);
-            You.addSpell(S2);
-            You.addSpell(S3);
-            You.addSpell(S4);
+            if (!S1.getName().Equals(""))
+                You.addSpell(S1);
+            if (!S2.getName().Equals(""))
+                You.addSpell(S2);
+            if (!S3.getName().Equals(""))
+                You.addSpell(S3);
+            if (!S4.getName().Equals(""))
+                You.addSpell(S4);
 
             //Display Monster and Player value
             pageTitle.Text = Enemy.getSubtitle() + ": " + Enemy.getName();
@@ -163,7 +158,7 @@ namespace Custom_RPG_Battle
             SpellListScroll.Visibility = Visibility.Collapsed;
 
             //Find item and store item values for easy display
-            int spellIndex = You.findSpell(((Button)sender).Content.ToString().Substring(0, ((Button)sender).Content.ToString().Length - 7));    //get "Spell" instead of "Spell - 10mp"
+            int spellIndex = You.findSpell(tempSpellName);    
             string spellName = You.getSpellList()[spellIndex].getName();
             int spellDamage;
 
@@ -215,8 +210,8 @@ namespace Custom_RPG_Battle
             ItemListScroll.Visibility = Visibility.Collapsed;
 
             //Find item and store item values for easy display
-            int itemIndex = You.findItem(((Button)sender).Content.ToString().Substring(0, ((Button)sender).Content.ToString().Length - 3));
-            string itemName = You.getItemList()[itemIndex].getName();   //get "Item" instead of "Item xNumItem"
+            int itemIndex = You.findItem(tempItemName);
+            string itemName = You.getItemList()[itemIndex].getName();   
             int itemHeal = You.getItemList()[itemIndex].getHeal();
 
             //Use selected item
@@ -307,13 +302,17 @@ namespace Custom_RPG_Battle
                 {
                     break;
                 }
-                spellButton[i] = new Button() { Content = You.getSpellList()[i].getName() + " - " + You.getSpellList()[i].getMPCost() + "mp" };     //new button with content = "Spell - MPCostmp";
+                spellButton[i] = new Button() { Content = You.getSpellList()[i].getName() };    
                 spellButton[i].Click += spellClick;
+                spellButton[i].PointerEntered += spellButton_Enter;
+                spellButton[i].PointerExited += spellButton_Exit;
+                spellButton[i].Width = 150;
                 SpellList.Children.Add(spellButton[i]);
             }
 
             Button returnButton = new Button() { Content = "Return" };
             returnButton.Click += returnButton_Click;
+            returnButton.Width = 150;
             SpellList.Children.Add(returnButton);
 
             //Display item list
@@ -386,13 +385,17 @@ namespace Custom_RPG_Battle
                 {
                     break;
                 }
-                itemButton[i] = new Button() { Content = You.getItemList()[i].getName() + " x" + You.getNumItemList()[i] };     //new button with content = "Item xNumItem";
+                itemButton[i] = new Button() { Content = You.getItemList()[i].getName() };     
                 itemButton[i].Click += itemClick;
+                itemButton[i].PointerEntered += itemButton_Enter;
+                itemButton[i].PointerExited += itemButton_Exit;
+                itemButton[i].Width = 150;
                 ItemList.Children.Add(itemButton[i]);
             }
 
             Button returnButton = new Button() { Content = "Return" };
             returnButton.Click += returnButton_Click;
+            returnButton.Width = 150;
             SpellList.Children.Add(returnButton);
 
             //Display item list
@@ -638,6 +641,34 @@ namespace Custom_RPG_Battle
             SpellListScroll.Visibility = Visibility.Collapsed;
             ItemListLabel.Visibility = Visibility.Collapsed;
             ItemListScroll.Visibility = Visibility.Collapsed;
+
+            enableButton();
+        }
+
+        private void spellButton_Enter(object sender, PointerRoutedEventArgs e)
+        {
+            tempSpellName = ((Button)sender).Content.ToString();
+            int spellIndex = You.findSpell(tempSpellName);
+            string spellMP = You.getSpellList()[spellIndex].getMPCost().ToString();
+            ((Button)sender).Content = spellMP;
+        }
+
+        private void spellButton_Exit(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Content = tempSpellName;
+        }
+
+        private void itemButton_Enter(object sender, RoutedEventArgs e)
+        {
+            tempItemName = ((Button)sender).Content.ToString();
+            int itemIndex = You.findItem(tempItemName);
+            string itemNum = You.getNumItemList()[itemIndex].ToString();
+            ((Button)sender).Content = itemNum;
+        }
+
+        private void itemButton_Exit(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Content = tempItemName;
         }
     }
 }

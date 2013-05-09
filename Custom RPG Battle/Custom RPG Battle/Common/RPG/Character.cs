@@ -508,6 +508,24 @@ namespace Custom_RPG_Battle.Common.RPG
             }
         }
 
+        public void addItem(Item item, int numItem)
+        {
+            for (int i = 0; i < itemList.Length; i++)
+            {
+                if (item == itemList[i])
+                {
+                    numItemList[i] = numItem;
+                    break;
+                }
+                else if (itemList[i] == null)
+                {
+                    itemList[i] = item;
+                    numItemList[i] = numItem;
+                    break;
+                }
+            }
+        }
+
         public bool useItem(string itemName)  //return whether item was used successfully
         {
             bool used = false;  //whether item was used
