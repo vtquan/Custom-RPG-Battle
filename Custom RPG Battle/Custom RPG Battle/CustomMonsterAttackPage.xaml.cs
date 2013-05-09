@@ -219,6 +219,16 @@ namespace Custom_RPG_Battle
                                 Int32.MaxValue.ToString() };
             int result;
 
+            if (Convert.ToInt32(Attack1MinDmg.Text) >= Convert.ToInt32(Attack1MaxDmg.Text) ||
+                Convert.ToInt32(Attack2MinDmg.Text) >= Convert.ToInt32(Attack2MaxDmg.Text) ||
+                Convert.ToInt32(Attack3MinDmg.Text) >= Convert.ToInt32(Attack3MaxDmg.Text) ||
+                Convert.ToInt32(Attack4MinDmg.Text) >= Convert.ToInt32(Attack4MaxDmg.Text))
+            {
+                messageDialog = new MessageDialog("The damage value in the left input box should be greater than the damage value in the right.");
+                messageDialog.Title = "Invalid Input";
+                error = true;
+            }
+
             foreach (string value in values)
             {
                 try

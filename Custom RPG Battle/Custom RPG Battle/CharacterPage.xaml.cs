@@ -105,6 +105,13 @@ namespace Custom_RPG_Battle
             string[] values = { MonsterHP.Text, MonsterMP.Text, Attack2MinDmg.Text, Attack2MaxDmg.Text, Int32.MaxValue.ToString() };
             int result;
 
+            if (Convert.ToInt32(Attack2MinDmg.Text) >= Convert.ToInt32(Attack2MaxDmg.Text))
+            {
+                messageDialog = new MessageDialog("The damage value in the left input box should be greater than the damage value in the right.");
+                messageDialog.Title = "Invalid Input";
+                error = true;
+            }
+
             foreach (string value in values)
             {
                 try
