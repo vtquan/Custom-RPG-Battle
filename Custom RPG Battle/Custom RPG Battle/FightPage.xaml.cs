@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 using Attack = Custom_RPG_Battle.Common.RPG.Attack;
@@ -139,6 +141,20 @@ namespace Custom_RPG_Battle
             if (!S4.getName().Equals(""))
                 You.addSpell(S4);
 
+            //Set monster portrait
+            Object MonPortrait = localSettings.Values["MonPortrait"];
+
+            if ((int)MonPortrait == 1)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon1.png"));
+            else if ((int)MonPortrait == 2)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon2.png"));
+            else if ((int)MonPortrait == 3)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon3.png"));
+            else if ((int)MonPortrait == 4)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon4.png"));
+            else
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon5.png"));
+            
             //Display Monster and Player value
             pageTitle.Text = Enemy.getSubtitle() + ": " + Enemy.getName();
             monsterName.Text = Enemy.getName();

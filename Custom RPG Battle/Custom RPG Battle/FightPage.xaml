@@ -264,7 +264,7 @@
                     <StackPanel x:Name="SpellList" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
                 </ScrollViewer>
             </Grid>
-            <Viewbox x:Name="viewbox" Height="350" VerticalAlignment="Top" Width="350" Margin="0,10,0,0">
+            <Viewbox x:Name="viewbox" Height="276" VerticalAlignment="Top" Width="350" Margin="508,10,508,0">
                 <Viewbox.Projection>
                     <PlaneProjection/>
                 </Viewbox.Projection>
