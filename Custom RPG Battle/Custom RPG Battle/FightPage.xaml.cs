@@ -665,7 +665,7 @@ namespace Custom_RPG_Battle
         {
             tempSpellName = ((Button)sender).Content.ToString();
             int spellIndex = You.findSpell(tempSpellName);
-            string spellMP = You.getSpellList()[spellIndex].getMPCost().ToString();
+            string spellMP = You.getSpellList()[spellIndex].getMPCost().ToString() +" MP";
             ((Button)sender).Content = spellMP;
         }
 
@@ -678,7 +678,7 @@ namespace Custom_RPG_Battle
         {
             tempItemName = ((Button)sender).Content.ToString();
             int itemIndex = You.findItem(tempItemName);
-            string itemNum = You.getNumItemList()[itemIndex].ToString();
+            string itemNum = You.getNumItemList()[itemIndex].ToString() + " Qnt";
             ((Button)sender).Content = itemNum;
         }
 
