@@ -343,35 +343,16 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
-    <MainPackageIdentityName>19840ViquocQuan.AdditionPopQuiz</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.BuCuaCCp</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.BingoCallsSimulator</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.CardDrawsSimulator</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.CoinFlipsSimulator</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.CustomPicross</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.DiceRollsSimulator</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.DivisionPopQuiz</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.FindDeadPixels</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.MajoraMasksMasksGuide</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.MemoSync</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.MonsterHunter3UltimateMatching</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.MonsterHunterTriMatching</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.MultiplicationPopQuiz</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.NorthAmericaFlags</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.ProbabilitySimulator</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.RandomNumberSimulator</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.RPGBattle</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.SouthAmericaFlags</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.SubtractionPopQuiz</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.UrinalPickingQuiz</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.VoltorbFlip</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.ZeldaOoTOcarinaMusics</MainPackageIdentityName>
-    <MainPackageIdentityName>19840ViquocQuan.ZeldaOoTSoundboard</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/ac253e47-decd-40ed-a802-f9faa2fd8f1f">
     <PackageInfo>
-      <PackageArchitecture>neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.0.0.5</PackageMaxArchitectureVersion>
+      <PackageArchitecture />
+      <PackageMaxArchitectureVersion>0.0.0.0</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>

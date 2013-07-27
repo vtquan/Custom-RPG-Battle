@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="19840ViquocQuan.CustomRPGBattle" Publisher="CN=BB2EBC43-7F5D-40B9-AAA2-936D0FDD3638" Version="1.0.0.6" />
+  <Identity Name="19840ViquocQuan.CustomRPGBattle" Publisher="CN=BB2EBC43-7F5D-40B9-AAA2-936D0FDD3638" Version="1.0.0.4" />
   <Properties>
     <DisplayName>Custom RPG Battle</DisplayName>
     <PublisherDisplayName>Viquoc Quan</PublisherDisplayName>
@@ -21,4 +21,7 @@
       </VisualElements>
     </Application>
   </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
 </Package>
