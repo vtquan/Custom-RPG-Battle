@@ -436,7 +436,7 @@ namespace Custom_RPG_Battle.Common.RPG
 
                 else if (spellName == spellList[i].getName())
                 {
-                    if (mp > spellList[i].getMPCost())
+                    if (mp >= spellList[i].getMPCost())
                     {
                         mp -= spellList[i].getMPCost();
 

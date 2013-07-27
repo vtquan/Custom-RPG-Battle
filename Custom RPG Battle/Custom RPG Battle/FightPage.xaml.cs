@@ -280,6 +280,7 @@ namespace Custom_RPG_Battle
             }
             ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
             ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
+
             MonsterAttack();
 
         }
