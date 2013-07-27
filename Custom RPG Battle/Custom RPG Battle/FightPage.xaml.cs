@@ -139,13 +139,13 @@ namespace Custom_RPG_Battle
             Attack A3 = new Attack(localSettings.Values["A3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A3MaxDmg"].ToString()));
             Attack A4 = new Attack(localSettings.Values["A4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A4MaxDmg"].ToString()));
 
-            if (!A1.getName().Equals("")) 
+            if (!(A1.getName().Equals(""))) 
                 Enemy.addAttack(A1);
-            if (!A2.getName().Equals("")) 
+            if (!(A2.getName().Equals(""))) 
                 Enemy.addAttack(A2);
-            if (!A3.getName().Equals("")) 
+            if (!(A3.getName().Equals(""))) 
                 Enemy.addAttack(A3);
-            if (!A4.getName().Equals("")) 
+            if (!(A4.getName().Equals(""))) 
                 Enemy.addAttack(A4);
 
             //Creating and adding items  to player
@@ -154,16 +154,16 @@ namespace Custom_RPG_Battle
             Item I3 = new Item(localSettings.Values["I3Nm"].ToString(), Convert.ToInt32(localSettings.Values["I3HP"].ToString()));
             Item I4 = new Item(localSettings.Values["I4Nm"].ToString(), Convert.ToInt32(localSettings.Values["I4HP"].ToString()));
 
-            if (!I1.getName().Equals(""))
+            if (!(I1.getName().Equals("")))
                 You.addItem(I1, Convert.ToInt32(localSettings.Values["I1Qnt"].ToString()));
 
-            if (!I2.getName().Equals(""))
+            if (!(I2.getName().Equals("")))
                 You.addItem(I2, Convert.ToInt32(localSettings.Values["I2Qnt"].ToString()));
 
-            if (!I3.getName().Equals(""))
+            if (!(I3.getName().Equals("")))
                 You.addItem(I3, Convert.ToInt32(localSettings.Values["I3Qnt"].ToString()));
                         
-            if (!I4.getName().Equals(""))
+            if (!(I4.getName().Equals("")))
                 You.addItem(I4, Convert.ToInt32(localSettings.Values["I4Qnt"].ToString()));
 
             //Creating and adding spells  to player
@@ -172,13 +172,13 @@ namespace Custom_RPG_Battle
             Spell S3 = new Spell(localSettings.Values["S3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S3MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S3MP"].ToString()));
             Spell S4 = new Spell(localSettings.Values["S4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S4MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S4MP"].ToString()));
 
-            if (!S1.getName().Equals(""))
+            if (!(S1.getName().Equals("")))
                 You.addSpell(S1);
-            if (!S2.getName().Equals(""))
+            if (!(S2.getName().Equals("")))
                 You.addSpell(S2);
-            if (!S3.getName().Equals(""))
+            if (!(S3.getName().Equals("")))
                 You.addSpell(S3);
-            if (!S4.getName().Equals(""))
+            if (!(S4.getName().Equals("")))
                 You.addSpell(S4);
 
             //Set monster portrait
