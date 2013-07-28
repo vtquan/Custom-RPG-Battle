@@ -343,16 +343,95 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>19840ViquocQuan.AChristmasCarolEbook</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AConnecticutYankeeinKingArthursCou</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.ARainyJuneandOtherStoriesbyOuida</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AStudyinScarlet-SirArthurConanDoyl</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AdditionPopQuiz</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AdventuresofTomSawyerbyMarkTwain</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AnimalCrossingMixup</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AustraliaOceaniaFlags</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.AustriabyFrederickShoberl</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.BuCuaCCp</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.BingoCallsSimulator</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.CardDrawsSimulator</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.CoinFlipsSimulator</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.CustomPicross</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.DantesInfernobyDanteAlighieri</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.DavidCopperfieldEbook</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.DiceRollsSimulator</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.DivisionPopQuiz</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.DonkeyKongMixup</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.FactsaboutCat</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.FindDeadPixels</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.FireEmblemJumbledImage</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.F-ZeroJumbledImage</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.HeadphoneTest</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.HowtoAnalyzePeopleonSightEbook</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.IBM1401ProgrammingSystems</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.LesMisrables</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.MajoraMasksMasksGuide</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.MarioJumbledImage</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.MathPopQuizCollection</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.MemoSync</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.MonsterHunter3UltimateMatching</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.MonsterHunterTriMatching</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.MultiplicationPopQuiz</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.NorthAmericaFlags</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.Picross10x10</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.Picross15x15</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.Picross5x5</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PicrossCollection</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonJumbledImage</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-GymLeaderHoenn</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-GymLeaderJohto</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-GymLeaderKanto</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeBug</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeDark</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeDragon</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeElectric</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeFight</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeFire</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeFlying</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeGhost</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeGrass</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeIce</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypePsychic</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeRock</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.PokemonMatch-TypeWater</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.ProbabilitySimulator</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.RandomNumberSimulator</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.RPGBattle</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SkydrivePractice</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SmashTheTarget</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SouthAmericaFlags</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SpeedAddition</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SpeedDivision</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SpeedMultiplication</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SpeedSubtraction</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.SubtractionPopQuiz</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheAdventureoftheDyingDetectivebyA</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheAdventuresofSherlockHolmesbyArt</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheAscentofManbyMathildeBlind</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheIliadEbook</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheMemoirsofSherlockHolmes-SirArth</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.ThePrinceandthePauper</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheReturnofSherlockHolmesEbook</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheStoriesofElDoradobyFronaEuniceW</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.TheTimeMachineEbook</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.ThisSideofParadiseEbook</MainPackageIdentityName>
     <MainPackageIdentityName>19840ViquocQuan.UrinalPickingQuiz</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.VoltorbFlip</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.Whack-A-Cockroach</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.Whack-A-Fly</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.ZeldaJumbledImage</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.ZeldaOoTOcarinaMusics</MainPackageIdentityName>
+    <MainPackageIdentityName>19840ViquocQuan.ZeldaOoTSoundboard</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/ac253e47-decd-40ed-a802-f9faa2fd8f1f">
     <PackageInfo>
-      <PackageArchitecture />
-      <PackageMaxArchitectureVersion>0.0.0.0</PackageMaxArchitectureVersion>
+      <PackageArchitecture>neutral</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.0.0.6</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>

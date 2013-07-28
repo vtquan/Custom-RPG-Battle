@@ -87,7 +87,7 @@
         	<Button x:Name="NextButton" Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.ColumnSpan="4" Margin="200,0,200,100" Grid.Row="1" Click="NextButton_Click"/>
         	<TextBlock x:Name="Attack2DmgLabel" TextWrapping="Wrap" Text="Attack Damage" VerticalAlignment="Top" Margin="0,257,0,0" FontSize="26.667" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
         	<TextBlock x:Name="to2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Margin="0,298,0,0" FontSize="26.667" Grid.RowSpan="2" Grid.ColumnSpan="4"/>
-        	<TextBox x:Name="Attack2MaxDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="0,298,260,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Grid.Column="2" Grid.RowSpan="2"/>
+        	<TextBox x:Name="Attack2MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,298,260,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Grid.Column="2" Grid.RowSpan="2"/>
         	<TextBox x:Name="Attack2MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="260,298,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left" Grid.Column="1" Grid.RowSpan="2"/>
 
         	<UI:AdControl 
