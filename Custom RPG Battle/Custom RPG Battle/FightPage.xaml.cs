@@ -33,6 +33,7 @@ namespace Custom_RPG_Battle
     /// </summary>
     public sealed partial class FightPage : Custom_RPG_Battle.Common.LayoutAwarePage
     {
+        #region Game Global Variables
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         Monster Enemy;
@@ -47,20 +48,21 @@ namespace Custom_RPG_Battle
         Random random = new Random();
         bool fled = false;  //check if the flee button has been pressed
 
-        //store HP and MP bar starting width
+        //store HP and MP bar current width
         double monsterHPBarWidth;
         double playerHPBarWidth;
         double monsterMPBarWidth;
         double playerMPBarWidth;
+        #endregion
 
         public FightPage()
         {
             this.InitializeComponent();
 
-            setUpPage();    //initialyze the page with proper information
+            SetUpPage();    //initialyze the page with proper information
         }
 
-       /// <summary>
+        /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
         /// provided when recreating a page from a prior session.
         /// </summary>
@@ -83,6 +85,7 @@ namespace Custom_RPG_Battle
         {
         }
 
+        #region UI Methods
         private void MonsterInfoGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             monsterHPBarWidth = monsterFullHPBar.ActualWidth;
@@ -95,10 +98,7 @@ namespace Custom_RPG_Battle
             }
             else
             {
-                monsterHPBar.Width = monsterHPBarWidth * Enemy.getHP() / Enemy.getHPStart();
-                monsterHPText.Text = Enemy.getHP().ToString();
-                monsterMPBar.Width = monsterMPBarWidth * Enemy.getMP() / Enemy.getMPStart();
-                monsterMPText.Text = Enemy.getMP().ToString();
+                RefreshHpMpBar();
             }
 
         }
@@ -115,94 +115,8 @@ namespace Custom_RPG_Battle
             }
             else
             {
-                yourHPBar.Width = playerHPBarWidth * You.getHP() / You.getHPStart();
-                yourHPText.Text = You.getHP().ToString();
-                yourMPBar.Width = playerMPBarWidth * You.getMP() / You.getMPStart();
-                yourMPText.Text = You.getMP().ToString();
+                RefreshHpMpBar();
             }
-        }
-
-        private void setUpPage()
-        {
-            //Idle Animation Begin
-            IdleAnimation.Begin();
-
-            //Creating Player Attack
-            Attack PA = new Attack(0, Convert.ToDouble(localSettings.Values["CharMinDmg"].ToString()), Convert.ToDouble(localSettings.Values["CharMaxDmg"].ToString()));
-            //Create Monster and Player value
-            Enemy = new Monster(localSettings.Values["MonNm"].ToString(), localSettings.Values["MonSub"].ToString(), Convert.ToInt32(localSettings.Values["MonHP"].ToString()), Convert.ToInt32(localSettings.Values["MonMP"].ToString()));
-            You = new Player(localSettings.Values["CharNm"].ToString(), Convert.ToInt32(localSettings.Values["CharHP"].ToString()), Convert.ToInt32(localSettings.Values["CharMP"].ToString()), PA);
-
-            //Creating and adding attacks to monster
-            Attack A1 = new Attack(localSettings.Values["A1Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A1MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A1MaxDmg"].ToString()));
-            Attack A2 = new Attack(localSettings.Values["A2Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A2MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A2MaxDmg"].ToString()));
-            Attack A3 = new Attack(localSettings.Values["A3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A3MaxDmg"].ToString()));
-            Attack A4 = new Attack(localSettings.Values["A4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A4MaxDmg"].ToString()));
-
-            if (!(A1.getName().Equals(""))) 
-                Enemy.addAttack(A1);
-            if (!(A2.getName().Equals(""))) 
-                Enemy.addAttack(A2);
-            if (!(A3.getName().Equals(""))) 
-                Enemy.addAttack(A3);
-            if (!(A4.getName().Equals(""))) 
-                Enemy.addAttack(A4);
-
-            //Creating and adding items  to player
-            Item I1 = new Item(localSettings.Values["I1Nm"].ToString(), Convert.ToInt32(localSettings.Values["I1HP"].ToString()));
-            Item I2 = new Item(localSettings.Values["I2Nm"].ToString(), Convert.ToInt32(localSettings.Values["I2HP"].ToString()));
-            Item I3 = new Item(localSettings.Values["I3Nm"].ToString(), Convert.ToInt32(localSettings.Values["I3HP"].ToString()));
-            Item I4 = new Item(localSettings.Values["I4Nm"].ToString(), Convert.ToInt32(localSettings.Values["I4HP"].ToString()));
-
-            if (!(I1.getName().Equals("")))
-                You.addItem(I1, Convert.ToInt32(localSettings.Values["I1Qnt"].ToString()));
-
-            if (!(I2.getName().Equals("")))
-                You.addItem(I2, Convert.ToInt32(localSettings.Values["I2Qnt"].ToString()));
-
-            if (!(I3.getName().Equals("")))
-                You.addItem(I3, Convert.ToInt32(localSettings.Values["I3Qnt"].ToString()));
-                        
-            if (!(I4.getName().Equals("")))
-                You.addItem(I4, Convert.ToInt32(localSettings.Values["I4Qnt"].ToString()));
-
-            //Creating and adding spells  to player
-            Spell S1 = new Spell(localSettings.Values["S1Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S1MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S1MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S1MP"].ToString()));
-            Spell S2 = new Spell(localSettings.Values["S2Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S2MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S2MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S2MP"].ToString()));
-            Spell S3 = new Spell(localSettings.Values["S3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S3MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S3MP"].ToString()));
-            Spell S4 = new Spell(localSettings.Values["S4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S4MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S4MP"].ToString()));
-
-            if (!(S1.getName().Equals("")))
-                You.addSpell(S1);
-            if (!(S2.getName().Equals("")))
-                You.addSpell(S2);
-            if (!(S3.getName().Equals("")))
-                You.addSpell(S3);
-            if (!(S4.getName().Equals("")))
-                You.addSpell(S4);
-
-            //Set monster portrait
-            Object MonPortrait = localSettings.Values["MonPortrait"];
-
-            if ((int)MonPortrait == 1)
-                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon1.png"));
-            else if ((int)MonPortrait == 2)
-                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon2.png"));
-            else if ((int)MonPortrait == 3)
-                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon3.png"));
-            else if ((int)MonPortrait == 4)
-                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon4.png"));
-            else
-                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon5.png"));
-            
-            //Display Monster and Player value
-            pageTitle.Text = Enemy.getSubtitle() + ": " + Enemy.getName();
-            monsterName.Text = Enemy.getName();
-            monsterHPText.Text = Enemy.getHPStart().ToString();
-            monsterMPText.Text = Enemy.getMPStart().ToString();
-            yourName.Text = You.getName();
-            yourHPText.Text = You.getHPStart().ToString();
-            yourMPText.Text = You.getMPStart().ToString();
         }
 
         private void DisplayActionLog()
@@ -235,254 +149,30 @@ namespace Custom_RPG_Battle
             ItemListScroll.Visibility = Visibility.Collapsed;
         }
 
-        private bool GameEnded()
+        private void RefreshHpMpBar()
         {
-            if (Enemy.getHP() <= 0 || You.getHP() <= 0 || fled)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            yourHPBar.Width = playerHPBarWidth * You.getHP() / You.getHPStart();
+            yourHPText.Text = You.getHP().ToString();
+            yourMPBar.Width = playerHPBarWidth * You.getMP() / You.getMPStart();
+            yourMPText.Text = You.getMP().ToString();
+
+            monsterHPBar.Width = monsterHPBarWidth * Enemy.getHP() / Enemy.getHPStart();
+            monsterHPText.Text = Enemy.getHP().ToString();
+            monsterMPBar.Width = monsterMPBarWidth * Enemy.getMP() / Enemy.getMPStart();
+            monsterMPText.Text = Enemy.getMP().ToString();
         }
 
-        private async void AttackB_Click(object sender, RoutedEventArgs e)
+        private void AddMessageToActionLog(string Message)
         {
-            DisableButton();
+            ActionLogList.Children.Add(new TextBlock() { Text = Message });
 
-            DisplayActionLog();
+            RefreshActionLog();
+        }
 
-            if (GameEnded())
-            {
-                return;
-            }
-
-            double damage = You.attackObject(ref Enemy);
-            ActionLogList.Children.Add(new TextBlock() { Text = "You did " + (int)damage + " damage to " + Enemy.getName() });
-
-            //Flinch Animation for Monster 
-            FlinchAnimation.Begin();
-            await Task.Delay(300);
-            IdleAnimation.Begin();
-
-            if (Enemy.getHP() <= 0)
-            {
-                YouWin();
-                return;
-            }
-            else
-            {
-                monsterHPBar.Width = monsterHPBarWidth * Enemy.getHP() / Enemy.getHPStart();
-                monsterHPText.Text = Enemy.getHP().ToString();
-                monsterMPBar.Width = monsterMPBarWidth * Enemy.getMP() / Enemy.getMPStart();
-                monsterMPText.Text = Enemy.getMP().ToString();
-            }
+        private void RefreshActionLog()
+        {
             ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
             ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
-
-            MonsterAttack();
-
-        }
-
-        private void SpellB_Click(object sender, RoutedEventArgs e)
-        {
-            DisableButton();
-
-            if (GameEnded())
-            {
-                return;
-            }
-
-            //Set up spell list
-            SpellList.Children.Clear();
-            spellButton = new Button[You.getSpellList().Length];
-            for (int i = 0; i < You.getNumSpells(); i++)
-            {
-                if (You.getSpellList()[i] == null)
-                {
-                    break;
-                }
-                spellButton[i] = new Button() { Content = You.getSpellList()[i].getName() };    
-                spellButton[i].Click += SpellClick;
-                spellButton[i].PointerEntered += SpellButton_Enter;
-                spellButton[i].PointerExited += SpellButton_Exit;
-                spellButton[i].Width = 150;
-                SpellList.Children.Add(spellButton[i]);
-            }
-
-            Button returnButton = new Button() { Content = "Return" };
-            returnButton.Click += returnButton_Click;
-            returnButton.Width = 150;
-            SpellList.Children.Add(returnButton);
-
-            DisplaySpellList();
-
-            if (You.getHP() <= 0)
-            {
-                YouLose();
-                return;
-            }
-
-            if (Enemy.getHP() <= 0)
-            {
-                YouWin();
-                return;
-            }
-
-        }
-
-        private void ItemB_Click(object sender, RoutedEventArgs e)
-        {
-            if (GameEnded())
-            {
-                return;
-            }
-
-            //Set up item list
-            ItemList.Children.Clear();
-            itemButton = new Button[You.getItemList().Length];
-            for (int i = 0; i < You.getItemList().Length; i++)
-            {
-                if (You.getItemList()[i] == null)
-                {
-                    break;
-                }
-                itemButton[i] = new Button() { Content = You.getItemList()[i].getName() };
-                itemButton[i].Click += ItemClick;
-                itemButton[i].PointerEntered += ItemButton_Enter;
-                itemButton[i].PointerExited += ItemButton_Exit;
-                itemButton[i].Width = 150;
-                ItemList.Children.Add(itemButton[i]);
-            }
-
-            Button returnButton = new Button() { Content = "Return" };
-            returnButton.Click += returnButton_Click;
-            returnButton.Width = 150;
-            ItemList.Children.Add(returnButton);
-
-            DisplayItemList();
-        }
-
-        private void DefendB_Click(object sender, RoutedEventArgs e)
-        {
-            DisableButton();
-
-            if (GameEnded())
-            {
-                return;
-            }
-
-            KeyValuePair<double, int> result = Enemy.attackDefended(ref You);
-
-            ActionLogList.Children.Add(new TextBlock() { Text = Enemy.getName() + " uses " + Enemy.getMoveList()[result.Value].getName() + " and did " + (int)result.Key + " damage to you" });
-
-            if (You.getHP() <= 0)
-            {
-                YouLose();
-                return;
-            }
-            else
-            {
-                yourHPBar.Width = playerHPBarWidth * You.getHP() / You.getHPStart();
-                yourHPText.Text = You.getHP().ToString();
-                yourMPBar.Width = playerHPBarWidth * You.getMP() / You.getMPStart();
-                yourMPText.Text = You.getMP().ToString();
-            }
-
-            ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
-            ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
-
-            EnableButton();
-        }
-
-        private void FleeB_Click(object sender, RoutedEventArgs e)
-        {
-            DisableButton();
-
-            if (GameEnded())
-            {
-                return;
-            }
-
-            if (!fled)
-            {
-                YouFlee();
-            }
-            else
-            {
-                fled = true;
-                YouLose();
-            }
-        }
-
-        private void MonsterAttack()
-        {
-            if (GameEnded())
-            {
-                return;
-            }
-
-            KeyValuePair<double, int> result = Enemy.attack(ref You);
-
-            ActionLogList.Children.Add(new TextBlock() { Text = Enemy.getName() + " uses " + Enemy.getMoveList()[result.Value].getName() + " and did " + (int)result.Key + " damage to you" });
-
-            if (You.getHP() <= 0)
-            {
-                YouLose();
-                yourHPBar.Width = 0;
-                yourHPText.Text = "0";
-                return;
-            }
-            else
-            {
-                yourHPBar.Width = playerHPBarWidth * You.getHP() / You.getHPStart();
-                yourHPText.Text = You.getHP().ToString();
-                yourMPBar.Width = playerHPBarWidth * You.getMP() / You.getMPStart();
-                yourMPText.Text = You.getMP().ToString();
-            }
-
-            ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
-            ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
-
-            EnableButton();
-        }
-
-        private void YouWin()
-        {
-            ActionLogList.Children.Add(new TextBlock() { Text = "You Win!" });
-            ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
-            ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
-            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Lucca's Theme.mp3");
-
-            monsterHPBar.Width = 0;
-            monsterHPText.Text = "0";
-
-            //Dying animation for Enemy
-            DeadAnimation.Begin();
-
-            ShowMessage("Victory", "You won!");
-        }
-
-        private void YouLose()
-        {
-            ActionLogList.Children.Add(new TextBlock() { Text = "You Lose!" });
-            ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
-            ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
-            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
-
-            ShowMessage("Game Over", "You lost!");
-        }
-
-        private void YouFlee()
-        {
-            ActionLogList.Children.Add(new TextBlock() { Text = "You run away!" });
-            ActionLogScroll.UpdateLayout();   //make sure historyScroll is update to include the added element
-            ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
-            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
-            fled = true;
-
-            ShowMessage("Run Away", "You fled!");
         }
 
         private async void ShowMessage(string title, string message)
@@ -507,6 +197,355 @@ namespace Custom_RPG_Battle
             await messageDialog.ShowAsync();
 
             EnableButton();
+        }
+        #endregion
+
+        #region Animation Methods
+        private async void AnimateMonsterFlinch()
+        {
+            FlinchAnimation.Begin();
+            await Task.Delay(300);
+            IdleAnimation.Begin();
+        }
+        #endregion
+
+        #region Game Methods
+        private void SetUpPage()
+        {
+            //Idle Animation Begin
+            IdleAnimation.Begin();
+
+            //Creating Player Attack
+            Attack PA = new Attack(0, Convert.ToDouble(localSettings.Values["CharMinDmg"].ToString()), Convert.ToDouble(localSettings.Values["CharMaxDmg"].ToString()));
+            //Create Monster and Player value
+            Enemy = new Monster(localSettings.Values["MonNm"].ToString(), localSettings.Values["MonSub"].ToString(), Convert.ToInt32(localSettings.Values["MonHP"].ToString()), Convert.ToInt32(localSettings.Values["MonMP"].ToString()));
+            You = new Player(localSettings.Values["CharNm"].ToString(), Convert.ToInt32(localSettings.Values["CharHP"].ToString()), Convert.ToInt32(localSettings.Values["CharMP"].ToString()), PA);
+
+            //Creating and adding attacks to monster
+            Attack A1 = new Attack(localSettings.Values["A1Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A1MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A1MaxDmg"].ToString()));
+            Attack A2 = new Attack(localSettings.Values["A2Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A2MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A2MaxDmg"].ToString()));
+            Attack A3 = new Attack(localSettings.Values["A3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A3MaxDmg"].ToString()));
+            Attack A4 = new Attack(localSettings.Values["A4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["A4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["A4MaxDmg"].ToString()));
+
+            if (!(A1.getName().Equals("")))
+                Enemy.addAttack(A1);
+            if (!(A2.getName().Equals("")))
+                Enemy.addAttack(A2);
+            if (!(A3.getName().Equals("")))
+                Enemy.addAttack(A3);
+            if (!(A4.getName().Equals("")))
+                Enemy.addAttack(A4);
+
+            //Creating and adding items  to player
+            Item I1 = new Item(localSettings.Values["I1Nm"].ToString(), Convert.ToInt32(localSettings.Values["I1HP"].ToString()));
+            Item I2 = new Item(localSettings.Values["I2Nm"].ToString(), Convert.ToInt32(localSettings.Values["I2HP"].ToString()));
+            Item I3 = new Item(localSettings.Values["I3Nm"].ToString(), Convert.ToInt32(localSettings.Values["I3HP"].ToString()));
+            Item I4 = new Item(localSettings.Values["I4Nm"].ToString(), Convert.ToInt32(localSettings.Values["I4HP"].ToString()));
+
+            if (!(I1.getName().Equals("")))
+                You.addItem(I1, Convert.ToInt32(localSettings.Values["I1Qnt"].ToString()));
+
+            if (!(I2.getName().Equals("")))
+                You.addItem(I2, Convert.ToInt32(localSettings.Values["I2Qnt"].ToString()));
+
+            if (!(I3.getName().Equals("")))
+                You.addItem(I3, Convert.ToInt32(localSettings.Values["I3Qnt"].ToString()));
+
+            if (!(I4.getName().Equals("")))
+                You.addItem(I4, Convert.ToInt32(localSettings.Values["I4Qnt"].ToString()));
+
+            //Creating and adding spells  to player
+            Spell S1 = new Spell(localSettings.Values["S1Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S1MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S1MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S1MP"].ToString()));
+            Spell S2 = new Spell(localSettings.Values["S2Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S2MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S2MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S2MP"].ToString()));
+            Spell S3 = new Spell(localSettings.Values["S3Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S3MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S3MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S3MP"].ToString()));
+            Spell S4 = new Spell(localSettings.Values["S4Nm"].ToString(), 0, Convert.ToDouble(localSettings.Values["S4MinDmg"].ToString()), Convert.ToDouble(localSettings.Values["S4MaxDmg"].ToString()), Convert.ToInt32(localSettings.Values["S4MP"].ToString()));
+
+            if (!(S1.getName().Equals("")))
+                You.addSpell(S1);
+            if (!(S2.getName().Equals("")))
+                You.addSpell(S2);
+            if (!(S3.getName().Equals("")))
+                You.addSpell(S3);
+            if (!(S4.getName().Equals("")))
+                You.addSpell(S4);
+
+            //Set monster portrait
+            Object MonPortrait = localSettings.Values["MonPortrait"];
+
+            if ((int)MonPortrait == 1)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon1.png"));
+            else if ((int)MonPortrait == 2)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon2.png"));
+            else if ((int)MonPortrait == 3)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon3.png"));
+            else if ((int)MonPortrait == 4)
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon4.png"));
+            else
+                Axalf.Source = new BitmapImage(new Uri("ms-appx:///Assets/Monster Pics/mon5.png"));
+
+            //Display Monster and Player value
+            pageTitle.Text = Enemy.getSubtitle() + ": " + Enemy.getName();
+            monsterName.Text = Enemy.getName();
+            monsterHPText.Text = Enemy.getHPStart().ToString();
+            monsterMPText.Text = Enemy.getMPStart().ToString();
+            yourName.Text = You.getName();
+            yourHPText.Text = You.getHPStart().ToString();
+            yourMPText.Text = You.getMPStart().ToString();
+        }
+
+        private bool GetGameEnded()
+        {
+            if (Enemy.getHP() <= 0 || You.getHP() <= 0 || fled)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        private int GetGameState()
+        {
+            int state = 0;
+            if (Enemy.getHP() <= 0)
+            {
+                state = 1;
+            }
+            else if (You.getHP() <= 0)
+            {
+                state = 2;
+            }
+            else if (fled)
+            {
+                state = 3;
+            }
+
+            return state;
+        }
+
+        private void SetUpSpellList()
+        {
+            SpellList.Children.Clear();
+            spellButton = new Button[You.getSpellList().Length];
+            for (int i = 0; i < You.getNumSpells(); i++)
+            {
+                if (You.getSpellList()[i] == null)
+                {
+                    break;
+                }
+                spellButton[i] = new Button() { Content = You.getSpellList()[i].getName() };
+                spellButton[i].Click += SpellClick;
+                spellButton[i].PointerEntered += SpellButton_Enter;
+                spellButton[i].PointerExited += SpellButton_Exit;
+                spellButton[i].Width = 150;
+                SpellList.Children.Add(spellButton[i]);
+            }
+
+            Button returnButton = new Button() { Content = "Return" };
+            returnButton.Click += returnButton_Click;
+            returnButton.Width = 150;
+            SpellList.Children.Add(returnButton);
+        }
+
+        private void SetUpItemList()
+        {
+            ItemList.Children.Clear();
+            itemButton = new Button[You.getItemList().Length];
+            for (int i = 0; i < You.getItemList().Length; i++)
+            {
+                if (You.getItemList()[i] == null)
+                {
+                    break;
+                }
+                itemButton[i] = new Button() { Content = You.getItemList()[i].getName() };
+                itemButton[i].Click += ItemClick;
+                itemButton[i].PointerEntered += ItemButton_Enter;
+                itemButton[i].PointerExited += ItemButton_Exit;
+                itemButton[i].Width = 150;
+                ItemList.Children.Add(itemButton[i]);
+            }
+
+            Button returnButton = new Button() { Content = "Return" };
+            returnButton.Click += returnButton_Click;
+            returnButton.Width = 150;
+            ItemList.Children.Add(returnButton);
+        }
+        #endregion
+        
+        private void AttackB_Click(object sender, RoutedEventArgs e)
+        {
+            DisableButton();
+
+            DisplayActionLog();
+
+            if (GetGameEnded())
+            {
+                return;
+            }
+
+            double damage = You.attackObject(ref Enemy);
+            AddMessageToActionLog("You did " + (int)damage + " damage to " + Enemy.getName());
+
+            AnimateMonsterFlinch();
+
+            if (Enemy.getHP() <= 0)
+            {
+                YouWin();
+                return;
+            }
+            else
+            {
+                RefreshHpMpBar();
+            }
+
+            RefreshActionLog();
+
+            MonsterAttack();
+        }
+
+        private void SpellB_Click(object sender, RoutedEventArgs e)
+        {
+            DisableButton();
+
+            if (GetGameEnded())
+            {
+                return;
+            }
+
+            SetUpSpellList();
+
+            DisplaySpellList();
+        }
+
+        private void ItemB_Click(object sender, RoutedEventArgs e)
+        {
+            DisableButton();
+
+            if (GetGameEnded())
+            {
+                return;
+            }
+
+            SetUpItemList();
+
+            DisplayItemList();
+        }
+
+        private void DefendB_Click(object sender, RoutedEventArgs e)
+        {
+            DisableButton();
+
+            if (GetGameEnded())
+            {
+                return;
+            }
+
+            KeyValuePair<double, int> result = Enemy.attackDefended(ref You);
+
+           AddMessageToActionLog(Enemy.getName() + " uses " + Enemy.getMoveList()[result.Value].getName() + " and did " + (int)result.Key + " damage to you");
+
+            if (You.getHP() <= 0)
+            {
+                YouLose();
+                return;
+            }
+            else
+            {
+                RefreshHpMpBar();
+            }
+
+            RefreshActionLog();
+
+            EnableButton();
+        }
+
+        private void FleeB_Click(object sender, RoutedEventArgs e)
+        {
+            DisableButton();
+
+            if (GetGameEnded())
+            {
+                return;
+            }
+
+            if (!fled)
+            {
+                YouFlee();
+            }
+            else
+            {
+                fled = true;
+                YouLose();
+            }
+        }
+
+        private void MonsterAttack()
+        {
+            if (GetGameEnded())
+            {
+                return;
+            }
+
+            KeyValuePair<double, int> result = Enemy.attack(ref You);
+
+            AddMessageToActionLog(Enemy.getName() + " uses " + Enemy.getMoveList()[result.Value].getName() + " and did " + (int)result.Key + " damage to you");
+
+            if (You.getHP() <= 0)
+            {
+                YouLose();
+                yourHPBar.Width = 0;
+                yourHPText.Text = "0";
+                return;
+            }
+            else
+            {
+                RefreshHpMpBar();
+            }
+
+            RefreshActionLog();
+
+            EnableButton();
+        }
+
+        private void YouWin()
+        {
+            AddMessageToActionLog("You Win!");
+
+            RefreshActionLog();
+
+            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Lucca's Theme.mp3");
+
+            monsterHPBar.Width = 0;
+            monsterHPText.Text = "0";
+
+            //Dying animation for Enemy
+            DeadAnimation.Begin();
+
+            ShowMessage("Victory", "You won!");
+        }
+
+        private void YouLose()
+        {
+            AddMessageToActionLog("You Lose!");
+            
+            RefreshActionLog();
+
+            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
+
+            ShowMessage("Game Over", "You lost!");
+        }
+
+        private void YouFlee()
+        {
+            AddMessageToActionLog("You run away!");
+
+            RefreshActionLog();
+
+            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
+            fled = true;
+
+            ShowMessage("Run Away", "You fled!");
         }
 
         private void CommandInvokedHandler(IUICommand command)  //clear action log and reset hp, mp and music
@@ -579,7 +618,7 @@ namespace Custom_RPG_Battle
             EnableButton();
         }
 
-        private async void SpellClick(object sender, RoutedEventArgs e)
+        private void SpellClick(object sender, RoutedEventArgs e)
         {
             DisplayActionLog();
 
@@ -593,17 +632,14 @@ namespace Custom_RPG_Battle
             spellDamage = result.Value[0];
             if (!result.Key)
             {
-                ActionLogList.Children.Add(new TextBlock() { Text = "You do not have enough mp" });
+                AddMessageToActionLog("You do not have enough mp");
                 EnableButton();
             }
             else
             {
-                //Flinch Animation for Monster 
-                FlinchAnimation.Begin();
-                await Task.Delay(300);
-                IdleAnimation.Begin();
+                AnimateMonsterFlinch();
 
-                ActionLogList.Children.Add(new TextBlock() { Text = "You use " + spellName + " and did " + spellDamage + " damage" });
+                AddMessageToActionLog("You use " + spellName + " and did " + spellDamage + " damage");
 
                 if (You.getHP() <= 0)
                 {
@@ -617,11 +653,7 @@ namespace Custom_RPG_Battle
                     return;
                 }
 
-
-                monsterHPBar.Width = monsterHPBarWidth * Enemy.getHP() / Enemy.getHPStart();
-                monsterHPText.Text = Enemy.getHP().ToString();
-                monsterMPBar.Width = monsterMPBarWidth * Enemy.getMP() / Enemy.getMPStart();
-                monsterMPText.Text = Enemy.getMP().ToString();
+                RefreshHpMpBar();
 
                 MonsterAttack();
             }
@@ -640,7 +672,7 @@ namespace Custom_RPG_Battle
             ((Button)sender).Content = tempSpellName;
         }
 
-        void ItemClick(object sender, RoutedEventArgs e)
+        private void ItemClick(object sender, RoutedEventArgs e)
         {
             DisplayActionLog();
 
@@ -653,12 +685,12 @@ namespace Custom_RPG_Battle
             bool used = You.useItem(itemName);
             if (!used)
             {
-                ActionLogList.Children.Add(new TextBlock() { Text = "You don't have that item!" });
+                AddMessageToActionLog("You don't have that item!");
                 EnableButton();
             }
             else
             {
-                ActionLogList.Children.Add(new TextBlock() { Text = "You use " + itemName + " and recover " + itemHeal.ToString() + "hp" });
+                AddMessageToActionLog("You use " + itemName + " and recover " + itemHeal.ToString() + "hp");
 
                 if (You.getHP() <= 0)
                 {
