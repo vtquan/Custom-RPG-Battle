@@ -372,7 +372,8 @@ namespace Custom_RPG_Battle
             ItemList.Children.Add(returnButton);
         }
         #endregion
-        
+
+        #region Button Events
         private void AttackB_Click(object sender, RoutedEventArgs e)
         {
             DisableButton();
@@ -479,6 +480,122 @@ namespace Custom_RPG_Battle
                 YouLose();
             }
         }
+
+        private void returnButton_Click(object sender, RoutedEventArgs e)
+        {
+            ActionLogLabel.Visibility = Visibility.Visible;
+            ActionLogScroll.Visibility = Visibility.Visible;
+            SpellListLabel.Visibility = Visibility.Collapsed;
+            SpellListScroll.Visibility = Visibility.Collapsed;
+            ItemListLabel.Visibility = Visibility.Collapsed;
+            ItemListScroll.Visibility = Visibility.Collapsed;
+
+            EnableButton();
+        }
+
+        private void SpellClick(object sender, RoutedEventArgs e)
+        {
+            DisplayActionLog();
+
+            //Find item and store item values for easy display
+            int spellIndex = You.findSpell(tempSpellName);
+            string spellName = You.getSpellList()[spellIndex].getName();
+            int spellDamage;
+
+            //Use selected item
+            KeyValuePair<bool, int[]> result = You.useSpell(spellName, ref Enemy);
+            spellDamage = result.Value[0];
+            if (!result.Key)
+            {
+                AddMessageToActionLog("You do not have enough mp");
+                EnableButton();
+            }
+            else
+            {
+                AnimateMonsterFlinch();
+
+                AddMessageToActionLog("You use " + spellName + " and did " + spellDamage + " damage");
+
+                if (You.getHP() <= 0)
+                {
+                    YouLose();
+                    return;
+                }
+
+                if (Enemy.getHP() <= 0)
+                {
+                    YouWin();
+                    return;
+                }
+
+                RefreshHpMpBar();
+
+                MonsterAttack();
+            }
+        }
+
+        private void SpellButton_Enter(object sender, PointerRoutedEventArgs e)
+        {
+            tempSpellName = ((Button)sender).Content.ToString();
+            int spellIndex = You.findSpell(tempSpellName);
+            string spellMP = You.getSpellList()[spellIndex].getMPCost().ToString() + " MP";
+            ((Button)sender).Content = spellMP;
+        }
+
+        private void SpellButton_Exit(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Content = tempSpellName;
+        }
+
+        private void ItemClick(object sender, RoutedEventArgs e)
+        {
+            DisplayActionLog();
+
+            //Find item and store item values for easy display
+            int itemIndex = You.findItem(tempItemName);
+            string itemName = You.getItemList()[itemIndex].getName();
+            int itemHeal = You.getItemList()[itemIndex].getHeal();
+
+            //Use selected item
+            bool used = You.useItem(itemName);
+            if (!used)
+            {
+                AddMessageToActionLog("You don't have that item!");
+                EnableButton();
+            }
+            else
+            {
+                AddMessageToActionLog("You use " + itemName + " and recover " + itemHeal.ToString() + "hp");
+
+                if (You.getHP() <= 0)
+                {
+                    YouLose();
+                    return;
+                }
+
+                if (Enemy.getHP() <= 0)
+                {
+                    YouWin();
+                    return;
+                }
+
+                MonsterAttack();
+            }
+        }
+
+        private void ItemButton_Enter(object sender, RoutedEventArgs e)
+        {
+            tempItemName = ((Button)sender).Content.ToString();
+            int itemIndex = You.findItem(tempItemName);
+            string itemNum = You.getNumItemList()[itemIndex].ToString() + " Qnt";
+            ((Button)sender).Content = itemNum;
+        }
+
+        private void ItemButton_Exit(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Content = tempItemName;
+        }
+        #endregion
 
         private void MonsterAttack()
         {
@@ -591,134 +708,13 @@ namespace Custom_RPG_Battle
         private void RestartGame()  //clear action log and reset hp, mp and music
         {
             viewbox.Opacity = 100;
-            Enemy.setHP(Enemy.getHPStart());
-            monsterHPBar.Width = monsterFullHPBar.ActualWidth;
-            monsterMPBar.Width = monsterFullMPBar.ActualWidth;
-            monsterHPText.Text = Enemy.getHPStart().ToString();
-            You.setHP(You.getHPStart());
-            yourHPBar.Width = yourFullHPBar.ActualWidth;
-            yourMPBar.Width = yourFullMPBar.ActualWidth;
-            yourHPText.Text = You.getHPStart().ToString();
             ActionLogList.Children.Clear();
+            SetUpPage();
+            RefreshHpMpBar();
             BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Battle Theme.mp3");
             fled = false;
 
             EnableButton();
-        }
-
-        private void returnButton_Click(object sender, RoutedEventArgs e)
-        {
-            ActionLogLabel.Visibility = Visibility.Visible;
-            ActionLogScroll.Visibility = Visibility.Visible;
-            SpellListLabel.Visibility = Visibility.Collapsed;
-            SpellListScroll.Visibility = Visibility.Collapsed;
-            ItemListLabel.Visibility = Visibility.Collapsed;
-            ItemListScroll.Visibility = Visibility.Collapsed;
-
-            EnableButton();
-        }
-
-        private void SpellClick(object sender, RoutedEventArgs e)
-        {
-            DisplayActionLog();
-
-            //Find item and store item values for easy display
-            int spellIndex = You.findSpell(tempSpellName);
-            string spellName = You.getSpellList()[spellIndex].getName();
-            int spellDamage;
-
-            //Use selected item
-            KeyValuePair<bool, int[]> result = You.useSpell(spellName, ref Enemy);
-            spellDamage = result.Value[0];
-            if (!result.Key)
-            {
-                AddMessageToActionLog("You do not have enough mp");
-                EnableButton();
-            }
-            else
-            {
-                AnimateMonsterFlinch();
-
-                AddMessageToActionLog("You use " + spellName + " and did " + spellDamage + " damage");
-
-                if (You.getHP() <= 0)
-                {
-                    YouLose();
-                    return;
-                }
-
-                if (Enemy.getHP() <= 0)
-                {
-                    YouWin();
-                    return;
-                }
-
-                RefreshHpMpBar();
-
-                MonsterAttack();
-            }
-        }
-        
-        private void SpellButton_Enter(object sender, PointerRoutedEventArgs e)
-        {
-            tempSpellName = ((Button)sender).Content.ToString();
-            int spellIndex = You.findSpell(tempSpellName);
-            string spellMP = You.getSpellList()[spellIndex].getMPCost().ToString() + " MP";
-            ((Button)sender).Content = spellMP;
-        }
-
-        private void SpellButton_Exit(object sender, PointerRoutedEventArgs e)
-        {
-            ((Button)sender).Content = tempSpellName;
-        }
-
-        private void ItemClick(object sender, RoutedEventArgs e)
-        {
-            DisplayActionLog();
-
-            //Find item and store item values for easy display
-            int itemIndex = You.findItem(tempItemName);
-            string itemName = You.getItemList()[itemIndex].getName();
-            int itemHeal = You.getItemList()[itemIndex].getHeal();
-
-            //Use selected item
-            bool used = You.useItem(itemName);
-            if (!used)
-            {
-                AddMessageToActionLog("You don't have that item!");
-                EnableButton();
-            }
-            else
-            {
-                AddMessageToActionLog("You use " + itemName + " and recover " + itemHeal.ToString() + "hp");
-
-                if (You.getHP() <= 0)
-                {
-                    YouLose();
-                    return;
-                }
-
-                if (Enemy.getHP() <= 0)
-                {
-                    YouWin();
-                    return;
-                }
-
-                MonsterAttack();
-            }
-        }
-
-        private void ItemButton_Enter(object sender, RoutedEventArgs e)
-        {
-            tempItemName = ((Button)sender).Content.ToString();
-            int itemIndex = You.findItem(tempItemName);
-            string itemNum = You.getNumItemList()[itemIndex].ToString() + " Qnt";
-            ((Button)sender).Content = itemNum;
-        }
-
-        private void ItemButton_Exit(object sender, PointerRoutedEventArgs e)
-        {
-            ((Button)sender).Content = tempItemName;
         }
     }
 }
