@@ -81,10 +81,10 @@
         	<Grid Margin="0">
         		<TextBlock x:Name="Attack1Label" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Attack 1" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="26.667" FontWeight="Bold"/>
         		<TextBlock x:Name="Attack1NameLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Margin="0,42,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack1Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack1"/>
+        		<TextBox x:Name="Attack1Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack1" Height="32"/>
         		<TextBlock x:Name="Attack1DmgLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Damage" VerticalAlignment="Top" Margin="0,106,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack1MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left"/>
-        		<TextBox x:Name="Attack1MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right"/>
+        		<TextBox x:Name="Attack1MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left" Height="32"/>
+        		<TextBox x:Name="Attack1MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Height="32"/>
         		<TextBlock x:Name="to1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Margin="166,138,165,0" FontSize="26.667"/>
         		<TextBlock x:Name="Attack1HPCostLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP Cost" VerticalAlignment="Top" Margin="0,170,0,0" FontSize="26.667" Visibility="Collapsed"/>
         		<TextBox x:Name="Attack1HPCost" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="130,202,130,0" TextAlignment="Center" InputScope="NumberFullWidth" Visibility="Collapsed"/>
@@ -94,11 +94,11 @@
         	<Grid Margin="0" Grid.Column="1">
         		<TextBlock x:Name="Attack2Label" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Attack 2" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="26.667" FontWeight="Bold"/>
         		<TextBlock x:Name="Attack2NameLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Margin="0,42,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack2Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack2"/>
+        		<TextBox x:Name="Attack2Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack2" Height="32"/>
         		<TextBlock x:Name="Attack2DmgLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Damage" VerticalAlignment="Top" Margin="0,106,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack2MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left"/>
+        		<TextBox x:Name="Attack2MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left" Height="32"/>
         		<TextBlock x:Name="to2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Margin="166,138,165,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack2MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right"/>
+        		<TextBox x:Name="Attack2MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Height="32"/>
         		<TextBlock x:Name="Attack2HPCostLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP Cost" VerticalAlignment="Top" Margin="0,170,0,0" FontSize="26.667" Visibility="Collapsed"/>
         		<TextBox x:Name="Attack2HPCost" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="130,202,130,0" TextAlignment="Center" InputScope="NumberFullWidth" Visibility="Collapsed"/>
         		<TextBlock x:Name="Attack2MPCostLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="MP Cost" VerticalAlignment="Top" Margin="0,234,0,0" FontSize="26.667" Visibility="Collapsed"/>
@@ -107,10 +107,10 @@
         	<Grid Margin="0" Grid.Column="2">
         		<TextBlock x:Name="Attack3Label" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Attack 3" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="26.667" FontWeight="Bold"/>
         		<TextBlock x:Name="Attack3NameLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Margin="0,42,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack3Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack3"/>
+        		<TextBox x:Name="Attack3Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack3" Height="32"/>
         		<TextBlock x:Name="Attack3DmgLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Damage" VerticalAlignment="Top" Margin="0,106,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack3MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left"/>
-        		<TextBox x:Name="Attack3MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right"/>
+        		<TextBox x:Name="Attack3MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left" Height="32"/>
+        		<TextBox x:Name="Attack3MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Height="32"/>
         		<TextBlock x:Name="to3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Margin="166,138,165,0" FontSize="26.667"/>
         		<TextBlock x:Name="Attack3HPCostLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP Cost" VerticalAlignment="Top" Margin="0,170,0,0" FontSize="26.667" Visibility="Collapsed"/>
         		<TextBox x:Name="Attack3HPCost" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="130,202,130,0" TextAlignment="Center" InputScope="NumberFullWidth" Visibility="Collapsed"/>
@@ -120,10 +120,10 @@
         	<Grid Margin="0" Grid.Column="3">
         		<TextBlock x:Name="Attack4Label" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Attack 4" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="26.667" FontWeight="Bold"/>
         		<TextBlock x:Name="Attack4NameLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Margin="0,42,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack4Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack4"/>
+        		<TextBox x:Name="Attack4Name" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,74,80,0" TextAlignment="Center" Text="Attack4" Height="32"/>
         		<TextBlock x:Name="Attack4DmgLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Damage" VerticalAlignment="Top" Margin="0,106,0,0" FontSize="26.667"/>
-        		<TextBox x:Name="Attack4MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left"/>
-        		<TextBox x:Name="Attack4MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right"/>
+        		<TextBox x:Name="Attack4MinDmg" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="80,138,0,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Left" Height="32"/>
+        		<TextBox x:Name="Attack4MaxDmg" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Margin="0,138,80,0" TextAlignment="Center" InputScope="NumberFullWidth" HorizontalAlignment="Right" Height="32"/>
         		<TextBlock x:Name="to4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Margin="166,138,165,0" FontSize="26.667"/>
         		<TextBlock x:Name="Attack4HPCostLabel" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HP Cost" VerticalAlignment="Top" Margin="0,170,0,0" FontSize="26.667" Visibility="Collapsed"/>
         		<TextBox x:Name="Attack4HPCost" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="130,202,130,0" TextAlignment="Center" InputScope="NumberFullWidth" Visibility="Collapsed"/>
