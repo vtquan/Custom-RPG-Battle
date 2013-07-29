@@ -55,6 +55,7 @@ namespace Custom_RPG_Battle
         double playerMPBarWidth;
         #endregion
 
+        #region Page Set Up
         public FightPage()
         {
             this.InitializeComponent();
@@ -84,6 +85,7 @@ namespace Custom_RPG_Battle
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
         }
+        #endregion
 
         #region UI Methods
         private void MonsterInfoGrid_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -175,6 +177,24 @@ namespace Custom_RPG_Battle
             ActionLogScroll.ScrollToVerticalOffset(ActionLogList.ActualHeight);     //scroll to bottom
         }
 
+        private void DisableButton()    //disable button functionality to prevent rapid clicking
+        {
+            AttackB.IsEnabled = false;
+            SpellB.IsEnabled = false;
+            DefendB.IsEnabled = false;
+            ItemB.IsEnabled = false;
+            FleeB.IsEnabled = false;
+        }
+
+        private void EnableButton() //enable button functionality
+        {
+            AttackB.IsEnabled = true;
+            SpellB.IsEnabled = true;
+            DefendB.IsEnabled = true;
+            ItemB.IsEnabled = true;
+            FleeB.IsEnabled = true;
+        }
+
         private async void ShowMessage(string title, string message)
         {
             var messageDialog = new MessageDialog(message);
@@ -182,7 +202,7 @@ namespace Custom_RPG_Battle
 
             messageDialog.Commands.Add(new UICommand(
             "Retry",
-            new UICommandInvokedHandler(this.CommandInvokedHandler)));
+            new UICommandInvokedHandler(this.ResetCommandInvokedHandler)));
 
             messageDialog.Commands.Add(new UICommand(
             "Close"));
@@ -206,6 +226,25 @@ namespace Custom_RPG_Battle
             FlinchAnimation.Begin();
             await Task.Delay(300);
             IdleAnimation.Begin();
+        }
+        #endregion
+
+        #region Music Methods
+        private void PlayBattleMusic()
+        {
+            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Battle Theme.mp3");
+            BackgroundMusic.Play();
+        }
+        private void PlayVictoryMusic()
+        {
+            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Lucca's Theme.mp3");
+            BackgroundMusic.Play();
+        }
+
+        private void PlayDefeatMusic()
+        {
+            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
+            BackgroundMusic.Play();
         }
         #endregion
 
@@ -392,7 +431,7 @@ namespace Custom_RPG_Battle
 
             if (Enemy.getHP() <= 0)
             {
-                YouWin();
+                Victory();
                 return;
             }
             else
@@ -448,7 +487,9 @@ namespace Custom_RPG_Battle
 
             if (You.getHP() <= 0)
             {
-                YouLose();
+                Defeat();
+                yourHPBar.Width = 0;
+                yourHPText.Text = "0";
                 return;
             }
             else
@@ -472,12 +513,12 @@ namespace Custom_RPG_Battle
 
             if (!fled)
             {
-                YouFlee();
+                Flee();
             }
             else
             {
                 fled = true;
-                YouLose();
+                Defeat();
             }
         }
 
@@ -518,13 +559,13 @@ namespace Custom_RPG_Battle
 
                 if (You.getHP() <= 0)
                 {
-                    YouLose();
+                    Defeat();
                     return;
                 }
 
                 if (Enemy.getHP() <= 0)
                 {
-                    YouWin();
+                    Victory();
                     return;
                 }
 
@@ -569,13 +610,13 @@ namespace Custom_RPG_Battle
 
                 if (You.getHP() <= 0)
                 {
-                    YouLose();
+                    Defeat();
                     return;
                 }
 
                 if (Enemy.getHP() <= 0)
                 {
-                    YouWin();
+                    Victory();
                     return;
                 }
 
@@ -610,7 +651,7 @@ namespace Custom_RPG_Battle
 
             if (You.getHP() <= 0)
             {
-                YouLose();
+                Defeat();
                 yourHPBar.Width = 0;
                 yourHPText.Text = "0";
                 return;
@@ -625,13 +666,13 @@ namespace Custom_RPG_Battle
             EnableButton();
         }
 
-        private void YouWin()
+        private void Victory()
         {
             AddMessageToActionLog("You Win!");
 
             RefreshActionLog();
 
-            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Lucca's Theme.mp3");
+            PlayVictoryMusic();
 
             monsterHPBar.Width = 0;
             monsterHPText.Text = "0";
@@ -642,30 +683,30 @@ namespace Custom_RPG_Battle
             ShowMessage("Victory", "You won!");
         }
 
-        private void YouLose()
+        private void Defeat()
         {
             AddMessageToActionLog("You Lose!");
             
             RefreshActionLog();
 
-            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
+            PlayDefeatMusic();
 
             ShowMessage("Game Over", "You lost!");
         }
 
-        private void YouFlee()
+        private void Flee()
         {
             AddMessageToActionLog("You run away!");
 
             RefreshActionLog();
 
-            BackgroundMusic.Source = new Uri(this.BaseUri, "ms-appx:///Assets/Musics/Chrono Trigger Music - Game Over.mp3");
+            PlayDefeatMusic();
             fled = true;
 
             ShowMessage("Run Away", "You fled!");
         }
 
-        private void CommandInvokedHandler(IUICommand command)  //clear action log and reset hp, mp and music
+        private void ResetCommandInvokedHandler(IUICommand command)  //clear action log and reset hp, mp and music
         {
             RestartGame();
         }
@@ -685,24 +726,6 @@ namespace Custom_RPG_Battle
             {
                 BackgroundMusic.Volume = 0;
             }
-        }
-
-        private void DisableButton()    //disable button functionality to prevent rapid clicking
-        {
-            AttackB.IsEnabled = false;
-            SpellB.IsEnabled = false;
-            DefendB.IsEnabled = false;
-            ItemB.IsEnabled = false;
-            FleeB.IsEnabled = false;
-        }
-
-        private void EnableButton() //enable button functionality
-        {
-            AttackB.IsEnabled = true;
-            SpellB.IsEnabled = true;
-            DefendB.IsEnabled = true;
-            ItemB.IsEnabled = true;
-            FleeB.IsEnabled = true;
         }
 
         private void RestartGame()  //clear action log and reset hp, mp and music
